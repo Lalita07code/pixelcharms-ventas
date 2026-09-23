@@ -1,0 +1,769 @@
+/* =========================================================
+   ESTILOS GENERALES
+========================================================= */
+/* Selector universal: selecciona todos los elementos */
+* {
+    margin: 0; /* Elimina los márgenes que agrega el navegador por defecto */
+    padding: 0; /* Elimina los rellenos que agrega el navegador por defecto */
+    box-sizing: border-box; /* Hace que padding y border se incluyan
+       dentro del ancho y alto del elemento */
+}
+
+/* Estilos generales de toda la página */
+body {
+    font-family: 'Poppins', sans-serif; /* Usa Poppins como fuente principal y sans-serif como alternativa */
+    background-color: #f5f5f5; /* Gris claro suave para el fondo general */
+    color: #0A1B2A; /* Define el color principal de los textos */
+}
+/*=================FIN - ESTILOS GENERALES================*/
+/* =========================================================
+   HEADER - ENCABEZADO
+========================================================= */
+header {
+    display: flex;    /* Activa Flexbox dentro del header */
+    justify-content: space-between; /* Coloca la marca a un lado y la navegación al otro */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 15px 40px; /* 15px arriba y abajo 40px a izquierda y derecha */
+    background-color: #0A1B2A; /* Fondo Azul Noche de PixelCharms */
+}
+
+/* Contenedor del logo + textos */
+.marca {
+    display: flex; /* Coloca logo y textos uno al lado del otro */
+    align-items: center; /* Los centra verticalmente */
+    gap: 15px; /* Deja espacio entre logo y texto */
+}
+
+/* Logo de PixelCharms */
+.marca img {
+    width: 120px; /* Limita el ancho del logo */
+    height: auto; /* Mantiene la proporción original de la imagen */
+}
+
+/* Nombre principal de la marca */
+.marca-texto h1 {
+    color: #ffffff; /* Coloca el título en blanco */
+    font-size: 24px; /* Define el tamaño del título */
+}
+
+/* Slogan */
+.marca-texto p {
+    color: #A6F7FF; /* Azul Hielo de la paleta PixelCharms */
+    font-size: 14px; /* Tamaño ligeramente menor */
+    margin-top: 4px; /* Separa el slogan del título */
+    text-align: right; /* Alinea el slogan hacia la derecha */
+}
+/*=======================FIN - HEADER=======================*/
+/* =========================================================
+   NAVEGACIÓN PRINCIPAL
+========================================================= */
+/* Lista que contiene las opciones del menú */
+nav ul {
+    display: flex; /* Activa Flexbox. Los elementos <li> dejan de aparecer uno debajo
+       del otro y pasan a organizarse horizontalmente */
+    gap: 25px; /* Agrega un espacio de 25px entre cada opción del menú */
+    list-style: none; /* Elimina los puntos que aparecen por defecto en las listas <ul> */
+}
+
+/* Enlaces que se encuentran dentro del menú */
+nav a {
+    color: #ffffff; /* Cambia el color de los enlaces a blanco */
+    text-decoration: none; /* Elimina el subrayado que los enlaces tienen por defecto */
+    font-weight: bold; /* Hace que el texto del menú se vea en negrita */
+    transition: color 0.3s; /* Hace que el cambio de color del :hover ocurra 
+         suavemente durante 0.3 segundos */
+}
+
+/* Efecto cuando pasamos el mouse sobre un enlace */
+nav a:hover {
+    color: #1AE89B; /* Cambia el texto a Verde Aurora cuando pasamos el mouse */
+}
+/*====================FIN - NAV PRINCIPAL===================*/
+/* =========================================================
+   HERO - SECCIÓN INICIO
+========================================================= */
+/* Contenedor principal de toda la sección Hero */
+.hero-contenido {
+    display: flex; /* Activa Flexbox */
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
+    padding: 0; /* Se elimina el espacio interno que antes rodeaba toda la imagen Hero */
+    margin: 0; /* Asegura de que el contenedor tampoco tenga márgenes externos */
+}
+
+/* =========================================================
+   CONTENEDOR DE LA IMAGEN
+========================================================= */
+.hero-imagen {
+    position: relative; /* Será la referencia para posicionar el botón sobre la imagen */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 550px; /* Limitamos la altura del Hero.Ya no crecerá según la altura original 
+        de la imagen */
+    overflow: hidden; /* Oculta las partes de la imagen que sobresalgan del contenedor */
+    margin: 0; /* Elimina márgenes externos */
+}
+
+/* =========================================================
+   IMAGEN PRINCIPAL DEL HERO
+========================================================= */
+.hero-imagen img {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: 100%; /* Ocupa toda la altura de .hero-imagen */
+    object-fit: cover; /* Hace que la imagen cubra completamente
+       el espacio sin deformarse */
+    object-position: center; /* Mantiene centrada la parte visible de la imagen */
+    display: block; /* Evita espacios adicionales debajo de la imagen */
+    border-radius: 0; /* La imagen llega hasta los bordes */
+}
+
+/* =========================================================
+   BOTÓN SOBRE LA IMAGEN
+========================================================= */
+.boton-principal {
+    position: absolute; /* Saca el botón de su posición normal y permite colocarlo 
+        encima de la imagen */
+    left: 55px; /* Separa el botón 55px del borde izquierdo de la imagen */
+    bottom: 35px; /* Separa el botón 35px del borde inferior de la imagen */
+    display: inline-block; /* Permite aplicar correctamente padding al enlace */
+    background-color: #7B2CBF; /* Violeta de PixelCharms */
+    color: #ffffff; /* Texto blanco */
+    padding: 14px 28px; /* Espacio interno del botón */
+    border-radius: 25px; /* Redondea completamente los extremos */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-weight: bold; /* Coloca el texto en negrita */
+    font-size: 18px; /* Tamaño del texto del botón */
+    z-index: 2; /* Garantiza que el botón aparezca por encima de la imagen */
+    transition: background-color 0.3s; /* Suaviza el cambio de color
+       cuando se pasa el mouse */
+}
+/* =========================================================
+   EFECTO HOVER DEL BOTÓN
+========================================================= */
+.boton-principal:hover {
+    background-color: #009F9A; /* Cambia al turquesa PixelCharms
+       cuando se pasa el mouse */
+}
+/*========================FIN - HERO========================*/
+/* =========================================================
+   PRODUCTOS
+========================================================= */
+/* Sección principal que contiene nuestros productos */
+.productos {
+    padding: 30px 4% 45px;     /* Reduce el espacio arriba y abajo */
+    background-color: #f5f5f5;   /* Gris claro del fondo */
+    text-align: center;           /* Centra todo el contenido */
+}
+/*========================FIN - PRODUCTOS========================*/
+/* =========================================================
+   ENCABEZADO DE LA SECCIÓN PRODUCTOS
+========================================================= */
+/* Contenedor del título, línea decorativa y subtítulo */
+.productos-encabezado {
+    text-align: center;           /* Centra todos los elementos */
+    margin-bottom: 25px;          /* Separa el encabezado de las tarjetas */
+}
+
+/* Título "Nuestros productos" */
+.productos-encabezado h2 {
+    margin:0;                     /* Elimina márgenes por defecto */
+    color: #0A1B2A;             /* Azul Noche de PixelCharms */
+    font-size: 2.5rem;            /* Hace el título más protagonista */
+    font-weight: 700;             /* Coloca el título en negrita */
+    margin-bottom: 10px;          /* Espacio entre título y línea */
+}
+
+/* Línea decorativa debajo del título */
+.linea-productos {
+    display: block;               /* Permite definir ancho y alto */
+    width: 100px;                 /* Largo de la línea */
+    height: 5px;                  /* Grosor de la línea */
+    background: linear-gradient(
+        90deg,
+        #7B2CBF,
+        #1AE89B
+    );                            /* Degradado violeta → verde PixelCharms */
+    border-radius: 10px;          /* Redondea los extremos */
+    margin: 0 auto 15px;          /* Centra la línea y separa el subtítulo */
+}
+
+/* Texto debajo del título */
+.productos-intro {
+    color: #52616b;               /* Gris azulado suave */
+    font-size: 1.1rem;            /* Tamaño del subtítulo */
+    font-style: italic;           /* Le da un aspecto más delicado */
+    margin: 0;
+}
+/*========================FIN - PRODUCTOS========================*/
+/* =========================================================
+   CONTENEDOR DE LAS TARJETAS
+========================================================= */
+.productos-contenedor {
+    display: flex;              /* Activa Flexbox */
+    justify-content: center;    /* Centra las tarjetas horizontalmente */
+    align-items: stretch;       /* Mantiene las tarjetas con una altura uniforme */
+    gap: 25px;                  /* Espacio entre cada tarjeta */
+    flex-wrap: nowrap;          /* Evita que una tarjeta baje a otra fila */
+    width: 100%;                /* Usa todo el ancho disponible */
+    padding: 0 40px;            /* Espacio interno del contenedor */
+    box-sizing: border-box;     /* Incluye el padding dentro del ancho */
+}
+/*========================FIN - CONTENEDOR DE LAS TARJETAS========================*/
+/* =========================================================
+   TARJETA DE PRODUCTO
+========================================================= */
+.producto-card {
+    width: 280px;               /* Ancho de cada tarjeta */
+    background-color: white;    /* Fondo blanco */
+    border-radius: 20px;        /* Redondea las esquinas */
+    overflow: hidden;           /* Respeta los bordes redondeados */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10); /* Sombra suave */
+    text-align: center;         /* Centra el contenido */
+    flex-shrink: 1;             /* Permite reducir ligeramente la tarjeta si hace falta */
+    display: flex; /* Activa Flexbox dentro de cada tarjeta */
+    flex-direction: column; /* Organiza imagen, título, descripción y botón verticalmente */
+    align-items: center; /* Mantiene el contenido centrado horizontalmente */
+}
+/*========================FIN - TARJETA DEL PRODUCTO========================*/
+/* =========================================================
+   IMAGEN DE LA TARJETA
+========================================================= */
+.producto-card img {
+    width: 100%; /* La imagen ocupa todo el ancho disponible de la tarjeta */
+    height: 280px; /* Todas las imágenes tendrán la misma altura */
+    object-fit: contain; /* Muestra la imagen COMPLETA sin recortarla */
+    display: block; /* Evita pequeños espacios debajo de la imagen */
+}
+/*========================FIN - IMAGEN DE LA TARJETA========================*/
+/* =========================================================
+   TÍTULO DE LA TARJETA
+========================================================= */
+.producto-card h3 {
+    font-size: 22px; /* Define el tamaño del nombre de la categoría */
+    color: #0A1B2A; /* Utiliza el Azul Noche de PixelCharms */
+    margin: 18px 15px 8px; /* 18px arriba 15px a los lados 8px abajo */
+}
+/*========================FIN - TÍTULO DE LA TARJETA========================*/
+/* =========================================================
+   DESCRIPCIÓN DE LA TARJETA
+========================================================= */
+.producto-card p {
+    font-size: 0.9rem;       /* Hace la descripción un poco más pequeña */
+    font-style: italic;      /* Coloca el texto en cursiva */
+    line-height: 1.4;        /* Da un poco de aire entre las líneas */
+    margin: 10px 15px;       /* Separa la descripción del resto del contenido */
+    color: #5E3A6D;          /* Violeta oscuro suave */
+}
+/*========================FIN - DESCRIPCIÓN DE LA TARJETA========================*/
+/* =========================================================
+   BOTON DE LA TARJETA
+========================================================= */
+/* Botón "Ver colección" de las tarjetas */
+.producto-card a {
+    display: inline-block;          /* Permite darle forma de botón */
+    background-color: #7B2CBF;      /* Violeta de PixelCharms */
+    color: white;                   /* Texto blanco */
+    text-decoration: none;          /* Quita el subrayado del enlace */
+    font-weight: bold;              /* Resalta el texto */
+    font-size: 0.9rem;              /* Tamaño del texto */
+    padding: 10px 22px;             /* Espacio interno del botón */
+    border-radius: 25px;            /* Forma redondeada */
+    margin-top: auto; /* Empuja el botón hacia la parte inferior de la tarjeta */
+    margin-bottom: 18px;            /* Separa el botón del borde inferior */
+    transition: 0.3s;               /* Suaviza el efecto al pasar el mouse */
+}
+
+/* Efecto al pasar el mouse */
+.producto-card a:hover {
+    background-color: #009F9A;      /* Turquesa PixelCharms */
+    transform: translateY(-2px);     /* Eleva ligeramente el botón */
+}
+/*========================FIN - BOTON DE LA TARJETA========================*/
+/* =========================================================
+   BOTÓN DE LA TARJETA
+========================================================= */
+.boton-producto {
+    display: inline-block; /* Permite que el enlace se comporte visualmente como un botón */
+    background-color: #7B2CBF;/* Violeta de PixelCharms */
+    color: #ffffff; /* Texto blanco */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-weight: bold;  /* Destaca el texto del botón */
+    padding: 10px 20px; /* Agrega espacio dentro del botón */
+    border-radius: 20px; /* Redondea los extremos */
+    margin-bottom: 20px; /* Deja espacio entre el botón y el borde inferior de la tarjeta */
+    transition: background-color 0.3s; /* Suaviza el cambio de color del hover */
+}
+/*========================FIN - BOTÓN DE LA TARJETA========================*/
+/* =========================================================
+   HOVER DEL BOTÓN DE LA TARJETA
+========================================================= */
+.boton-producto:hover {
+    background-color: #009F9A; /* Cambia al Turquesa PixelCharms
+       cuando pasamos el mouse */
+}
+/*========================FIN - HOVER DEL BOTÓN DE LA TARJETA========================*/
+/* =========================================================
+   RESEÑAS
+========================================================= */
+/* Sección principal de reseñas */
+.resenas {
+    padding: 35px 5% 25px; /* Reduce el espacio inferior de Reseñas */
+    background-color: #f5f5f5; /* Mantiene el mismo fondo gris claro de la página */
+    text-align: center; /* Centra el contenido de la sección */
+}
+
+/* Encabezado de la sección de reseñas */
+.resenas-encabezado {
+    margin-bottom: 25px; /* Separa el encabezado de las tarjetas */
+}
+
+/* Título de la sección */
+.resenas-encabezado h2 {
+    font-size: 2.2rem; /* Aumenta el tamaño del título */
+    color: #0A1B2A; /* Azul Noche de PixelCharms */
+    margin: 0 0 10px; /* 0 arriba 0 a los lados 10px abajo */
+}
+
+/* Línea decorativa */
+.linea-resenas {
+    display: block; /* Permite darle ancho y alto */
+    width: 80px; /* Define el largo de la línea */
+    height: 5px; /* Define el grosor */
+    margin: 0 auto 15px; /* La centra y deja espacio debajo */
+    border-radius: 10px; /* Redondea los extremos */
+    background: linear-gradient(
+        90deg,
+        #7B2CBF,
+        #1AE89B
+    ); /* Degradado PixelCharms */
+}
+
+/* Texto introductorio */
+.resenas-encabezado p {
+    color: #52616b; /* Gris azulado */
+    font-style: italic; /* Texto en cursiva */
+    font-size: 1rem; /* Tamaño del texto */
+    margin: 0; /* Evita márgenes adicionales del párrafo */
+}
+/* =========================================================
+   GRID DE RESEÑAS
+========================================================= */
+.resenas-contenedor {
+    display: grid; /* Activa CSS Grid */
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas del mismo tamaño */
+    gap: 25px; /* Deja 25px de separación entre las tarjetas */
+    max-width: 1200px; /* Evita que las reseñas se estiren demasiado */
+    margin: 0 auto; /* Centra todo el Grid dentro de la página */
+}
+/*========================FIN - GRID DE RESEÑAS========================*/
+/* =========================================================
+   TARJETAS DE RESEÑAS
+========================================================= */
+.resena-card {
+    background-color: #ffffff; /* Fondo blanco para diferenciar la tarjeta
+       del gris claro de la página */
+    padding: 25px; /* Espacio interno para que el contenido no quede pegado a los bordes */
+    border-radius: 18px; /* Redondea las esquinas de la tarjeta */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Agrega una sombra suave */
+    text-align: center; /* Centra estrellas, comentario y nombre */
+}
+
+/* Estrellas de las reseñas */
+.estrellas {
+    color: #7B2CBF; /* Violeta PixelCharms */
+    font-size: 1.2rem; /* Aumenta ligeramente el tamaño */
+    margin-bottom: 15px; /* Separa las estrellas del comentario */
+    letter-spacing: 3px; /* Deja un pequeño espacio entre las estrellas */
+}
+
+/* Comentario de cada reseña */
+.resena-card p {
+    color: #52616b; /* Gris azulado para el texto del comentario */
+    font-size: 0.95rem; /* Texto ligeramente más pequeño */
+    font-style: italic; /* Da aspecto de testimonio */
+    line-height: 1.5; /* Mejora la lectura */
+    margin-bottom: 15px; /* Separa el comentario del nombre */
+}
+
+/* Nombre de la persona */
+.resena-card h3 {
+    color: #0A1B2A; /* Azul Noche PixelCharms */
+    font-size: 1rem; /* Nombre discreto pero visible */
+    margin: 0;/* Elimina márgenes automáticos */
+}
+/*========================FIN - TARJETAS DE RESEÑAS========================*/
+/* ========================================= */
+/* SECCIÓN CONTACTO                          */
+/* ========================================= */
+.contacto {
+    padding: 25px 5% 35px; /* Reduce el espacio superior e inferior de toda la sección */
+    background-color: #f4f4f4; /* Mantiene el fondo gris suave de la página */
+}
+/* ========================================= */
+/* ENCABEZADO DE CONTACTO                    */
+/* ========================================= */
+.contacto-encabezado {
+    text-align: center; /* Centra el título y el subtítulo */
+    margin-bottom: 20px; /* Reduce la distancia entre el encabezado y el contenido */
+}
+
+.contacto-encabezado h2 {
+    font-size: 2.5rem; /* Define el tamaño del título */
+    color: #0A1B2A; /* Aplica el azul noche de PixelCharms */
+    margin: 0 0 8px; /* Elimina margen superior y deja solo un pequeño espacio debajo */
+}
+
+/* Línea decorativa debajo del título Contactanos */
+.linea-decorativa {
+    display: block; /* Permite definir ancho y alto */
+    width: 80px; /* Define el largo de la línea */
+    height: 5px; /* Define el grosor de la línea */
+    margin: 0 auto 15px; /* Centra la línea y deja espacio debajo */
+    border-radius: 10px; /* Redondea los extremos */
+    background: linear-gradient(90deg, #7B2CBF, #1AE89B); /* Degradado PixelCharms */
+}
+
+.contacto-encabezado p {
+    font-size: 1.1rem; /* Define el tamaño del subtítulo */
+    color: #555; /* Aplica un gris oscuro suave */
+    font-style: italic; /* Coloca el subtítulo en cursiva */
+    margin: 10px 0 0; /* Elimina márgenes innecesarios */
+}
+/* ========================================= */
+/* CONTENEDOR PRINCIPAL DE CONTACTO          */
+/* ========================================= */
+.contacto-contenedor {
+    display: flex; /* Activa Flexbox */
+    flex-direction: row; /* Coloca información y formulario uno al lado del otro */
+    gap: 40px; /* Mantiene separación entre las dos columnas */
+    justify-content: center; /* Centra las columnas horizontalmente */
+    align-items: stretch; /* Hace que ambas columnas tengan la misma altura */
+    max-width: 1100px; /* Limita el ancho máximo del contenido */
+    margin: 0 auto; /* Centra el contenedor */
+}
+/*========================FIN - CONTENEDOR DE CONTACTO========================*/
+/* ========================================= */
+/* INFORMACIÓN DE CONTACTO                   */
+/* ========================================= */
+.contacto-info {
+    flex: 1; /* Permite que esta columna ocupe el espacio disponible */
+    max-width: 450px; /* Evita que la columna se haga demasiado ancha */
+    padding: 30px; /* Agrega espacio interno */
+    background-color: #ffffff; /* Coloca fondo blanco para destacar sobre el gris */
+    border-radius: 20px; /* Redondea las esquinas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Agrega una sombra suave */
+    display: flex; /* Activa Flexbox dentro de la tarjeta */
+    flex-direction: column; /* Organiza su contenido verticalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+}
+
+.contacto-info h3 {
+    color: #0A1B2A; /* Usa el azul noche de PixelCharms */
+    font-size: 1.6rem; /* Define el tamaño del título */
+    margin: 0 0 15px; /* Elimina el margen superior y separa el texto inferior */
+}
+
+.contacto-info > p {
+    color: #555; /* Aplica un gris suave al texto */
+    line-height: 1.6; /* Mejora la separación entre líneas */
+    margin-bottom: 20px; /* Separa el texto de las redes sociales */
+}
+
+.contacto-redes p {
+    margin: 8px 0; /* Separa ligeramente Instagram y TikTok */
+    color: #0A1B2A; /* Aplica el azul noche de la marca */
+}
+/*========================FIN - INFORMACIÓN DE CONTACTO========================*/
+/* ========================================= */
+/* FORMULARIO DE CONTACTO                    */
+/* ========================================= */
+.contacto-formulario {
+    flex: 1; /* Permite que el formulario ocupe el espacio disponible */
+    max-width: 450px; /* Limita el ancho del formulario */
+    padding: 30px; /* Agrega espacio interno */
+    background-color: #ffffff; /* Coloca fondo blanco */
+    border-radius: 20px; /* Redondea las esquinas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Agrega una sombra suave */
+}
+/* ========================================= */
+/* CAMPOS DEL FORMULARIO                     */
+/* ========================================= */
+.campo-formulario {
+    display: flex; /* Activa Flexbox dentro de cada campo */
+    flex-direction: column; /* Coloca el label arriba del input */
+    margin-bottom: 18px; /* Separa un campo del siguiente */
+}
+
+.campo-formulario label {
+    margin-bottom: 6px; /* Separa el texto del campo */
+    color: #0A1B2A; /* Aplica el azul noche */
+    font-weight: 600; /* Hace que el label destaque un poco más */
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+    width: 100%; /* Hace que los campos ocupen todo el ancho disponible */
+    padding: 12px; /* Agrega espacio dentro de los campos */
+    border: 1px solid #d8d8d8; /* Agrega un borde gris muy suave */
+    border-radius: 10px; /* Redondea las esquinas de los campos */
+    font-family: inherit; /* Utiliza la misma tipografía de la página */
+    font-size: 1rem; /* Define un tamaño cómodo para escribir */
+    box-sizing: border-box; /* Evita que el padding aumente el ancho del campo */
+}
+
+.campo-formulario textarea {
+    resize: vertical; /* Permite cambiar solamente la altura del mensaje */
+}
+/*========================FIN - CAMPOS DEL FORMULARIO========================*/
+/* ========================================= */
+/* BOTÓN ENVIAR MENSAJE                      */
+/* ========================================= */
+.boton-contacto {
+    padding: 12px 25px; /* Define el espacio interno del botón */
+    background-color: #7B2CBF; /* Usa el violeta principal de PixelCharms */
+    color: #ffffff; /* Coloca el texto en blanco */
+    border: none; /* Elimina el borde predeterminado */
+    border-radius: 25px; /* Crea el efecto redondeado */
+    font-size: 1rem; /* Define el tamaño del texto */
+    font-weight: bold; /* Resalta el texto del botón */
+    cursor: pointer; /* Muestra la manito cuando pasamos el mouse */
+}
+/*========================FIN - BOTÓN ENVIAR MENSAJE========================*/
+
+/* =========================================================
+   PIE DE PÁGINA
+   ========================================================= */
+footer {
+    background-color: #0A1B2A; /* Aplica el Azul Noche característico de PixelCharms */
+    color: #ffffff; /* Coloca el texto del footer en blanco */
+    padding: 35px 40px; /* Agrega espacio interno arriba/abajo y a los lados */
+}
+.footer-contenido {
+    max-width: 1200px; /* Limita el ancho máximo del contenido del footer */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    display: flex; /* Activa Flexbox para organizar las dos partes del footer */
+    justify-content: space-between; /* Lleva la marca a la izquierda y la información a la derecha */
+    align-items: center; /* Centra verticalmente ambos bloques */
+    gap: 30px; /* Agrega separación entre los bloques */
+}
+.footer-marca h3 {
+    font-size: 24px; /* Define el tamaño del nombre de la marca */
+    margin-bottom: 5px; /* Separa el nombre del slogan */
+}
+.footer-marca p {
+    font-size: 15px; /* Define el tamaño del slogan */
+    margin: 0; /* Elimina el margen predeterminado del párrafo */
+    color: #A6F7FF; /* Utiliza Azul Hielo para destacar el slogan */
+     text-align: right; /* Alinea el slogan hacia la derecha */
+}
+.footer-info {
+    text-align: right; /* Alinea la información hacia la derecha */
+}
+.footer-info p {
+    margin: 5px 0; /* Agrega una pequeña separación entre los textos */
+    font-size: 14px; /* Define un tamaño más discreto para la información */
+}
+/*========================FIN - PIE DE PÁGINA========================*/
+/* =========================================================
+   RESPONSIVE - CELULARES
+   ========================================================= */
+@media (max-width: 601px) { /* Aplica estos estilos cuando la pantalla mide 600px o menos */
+
+    body {
+        width: 100%; /* Hace que el body ocupe todo el ancho disponible de la pantalla */
+        margin: 0; /* Evita márgenes externos que puedan generar espacio lateral */
+    }
+    /* =========================
+       PRODUCTOS
+    ========================= */
+    .productos-contenedor {
+        flex-direction: column !important; /* Fuerza las tarjetas a colocarse verticalmente */
+        align-items: center; /* Centra las tarjetas */
+        padding: 0; /* Elimina espacio lateral */
+        width: 100%; /* Usa todo el ancho disponible */
+    }
+    .producto-card {
+        width: 280px; /* Mantiene un ancho cómodo para cada tarjeta en celular */
+        max-width: 90%; /* Evita que la tarjeta se salga de la pantalla */
+        flex-shrink: 0; /* Evita que Flexbox aplaste la tarjeta */
+    }
+    /* =========================
+       HEADER
+    ========================= */
+    header {
+        flex-direction: column; /* Coloca la identidad y el menú uno debajo del otro */
+        align-items: center; /* Centra horizontalmente la marca y el menú */
+        gap: 10px; /* Separa la identidad de PixelCharms del menú */
+        padding: 15px 20px; /* Reduce el espacio interno del header en celular */
+    }
+    .marca {
+        justify-content: center; /* Centra el conjunto formado por el logo y los textos */
+        width: 100%; /* Hace que la marca aproveche todo el ancho disponible */
+    }
+    .marca img {
+        width: 90px; /* Ajusta el tamaño del logo para celular */
+    }
+    .marca-texto h1 {
+        font-size: 24px; /* Ajusta el tamaño del nombre de PixelCharms */
+    }
+    .marca-texto p {
+        font-size: 14px; /* Ajusta el tamaño del slogan para celular */
+        text-align: right; /* Coloca a la derecha el slogan en la vista móvil */
+    }
+    /* =========================
+       MENÚ DE NAVEGACIÓN
+    ========================= */
+    nav {
+        width: 100%; /* Hace que el menú tenga su propia fila dentro del header */
+    }
+    nav ul {
+        width: 100%; /* Usa todo el ancho disponible del menú */
+        justify-content: center; /* Centra las opciones del menú */
+        gap: 15px; /* Deja espacio entre Inicio, Productos, Reseñas y Contacto */
+        flex-wrap: wrap; /* Permite bajar opciones de línea si el espacio no alcanza */
+    }
+    nav a {
+        font-size: 13px; /* Reduce ligeramente el tamaño del texto del menú */
+    }
+    /* =========================
+       RESEÑAS
+    ========================= */
+    .resenas-contenedor {
+        grid-template-columns: 1fr; /* Cambia las 3 columnas de reseñas por una sola columna en celular */
+        gap: 15px; /* Reduce el espacio entre las tarjetas en pantallas pequeñas */
+    }
+    /* =========================
+       CONTACTO
+    ========================= */
+    .contacto {
+        width: 100%; /* Ocupa solamente el ancho disponible */
+        max-width: 100%; /* Evita que la sección se desborde */
+        padding-left: 20px; /* Espacio interno izquierdo */
+        padding-right: 20px; /* Espacio interno derecho */
+    }
+    .contacto-contenedor {
+        flex-direction: column; /* Coloca la información y el formulario uno debajo del otro en celular */
+        align-items: center; /* Centra ambas tarjetas horizontalmente */
+        gap: 20px; /* Deja espacio entre la información y el formulario */
+    }
+    .contacto-info,
+    .contacto-formulario {
+        width: 100%; /* Hace que ambas tarjetas aprovechen el ancho disponible */
+        max-width: 450px; /* Evita que superen el ancho máximo definido para escritorio */
+    }
+    /* =========================
+       HERO
+    ========================= */
+    .hero-imagen {
+        height: auto; /* Permite que el Hero conserve la proporción de la imagen */
+        overflow: visible; /* Evita que se recorten partes de la fotografía */
+    }
+    .hero-imagen img {
+        width: 100%; /* La imagen ocupa todo el ancho disponible */
+        height: auto; /* Mantiene la proporción original */
+        object-fit: contain; /* Muestra la imagen completa sin recortarla */
+        object-position: center; /* Centra la imagen */
+        display: block; /* Evita espacios adicionales debajo de la imagen */
+    }
+    /* =========================
+       BOTÓN DEL HERO
+    ========================= */
+    .boton-principal {
+        bottom: 35px; /* Sube el botón para que no tape la franja inferior del Hero */
+        left: 3%; /* Ubica el botón hacia el lado izquierdo del Hero en versión mobile */
+    }
+    /* =========================
+    FOOTER RESPONSIVE
+    ========================= */
+
+    .footer-contenido {
+        flex-direction: column; /* Coloca los bloques del footer uno debajo del otro */
+        text-align: center; /* Centra el contenido del footer */
+        gap: 15px; /* Deja espacio entre la marca y la información */
+    }
+
+    .footer-info {
+        text-align: center; /* Centra Instagram y "Hecho con amor" */
+    }
+
+    footer {
+        padding: 25px 20px; /* Reduce el espacio interno del footer en pantallas pequeñas */
+    }
+}
+/*========================FIN - RESPONSIVE CELULARES========================*/
+/* =========================
+   RESPONSIVE - TABLET
+   ========================= */
+@media (min-width: 601px) and (max-width: 900px) {
+    .productos-contenedor {
+        flex-wrap: wrap; /* Permite que las tarjetas bajen a una nueva fila */
+        gap: 20px; /* Deja espacio entre las tarjetas */
+        padding: 0 20px; /* Reduce el espacio lateral en tablet */
+    }
+    .producto-card {
+        width: 220px; /* Evita que las tarjetas se conviertan en espaguetis */
+        flex-shrink: 0; /* Evita que Flexbox aplaste las tarjetas */
+    }
+   .hero-imagen {
+        height: auto; /* Permite que la altura se adapte proporcionalmente a la imagen */
+        overflow: visible; /* Evita que se recorten partes de la fotografía */
+    }
+    .hero-imagen img {
+        width: 100%; /* La imagen ocupa todo el ancho disponible */
+        height: auto; /* Mantiene la proporción original de la fotografía */
+        object-fit: contain; /* Muestra la imagen completa sin recortarla */
+        display: block; /* Evita espacios adicionales debajo de la imagen */
+    }
+    .boton-principal {
+        bottom: 35px; /* Sube el botón para separarlo de la franja inferior */
+        left: 3%; /* Lo mantiene ubicado hacia el lado izquierdo del Hero */
+    }
+    header {
+        padding: 12px 15px; /* Reduce el espacio interno para aprovechar mejor el ancho */
+        gap: 8px; /* Deja una pequeña separación entre la marca y el menú */
+    }
+    .marca {
+        min-width: 0; /* Permite que la marca se adapte al espacio disponible */
+        gap: 8px; /* Reduce la separación entre el logo y el nombre */
+    }
+    .marca img {
+        width: 80px; /* Reduce el logo solamente en tablet */
+    }
+    nav ul {
+        gap: 15px; /* Reduce la separación entre las opciones del menú */
+    }
+    nav a {
+        font-size: 14px; /* Reduce ligeramente el texto del menú */
+    }
+    .marca h1 {
+        font-size: 22px; /* Reduce un poco el nombre de la marca en tablet */
+        line-height: 1.2; /* Mantiene las líneas del título ordenadas */
+    }
+    .marca p {
+        font-size: 12px; /* Reduce el slogan para evitar demasiados saltos de línea */
+        white-space: nowrap; /* Mantiene el slogan en una sola línea */
+        text-align: right; /* Coloca a la derecha el slogan */
+    }
+    .marca-texto h1 {
+        font-size: 18px; /* Reduce el nombre de la marca en tablet */
+        line-height: 1.2; /* Mantiene las dos líneas más compactas */
+    }
+    /* =========================
+       FOOTER - TABLETS
+    ========================= */
+    footer {
+        padding: 25px 30px; /* Reduce el espacio interno del footer en tablets */
+    }
+    .footer-contenido {
+        gap: 20px; /* Reduce la separación entre los dos bloques del footer */
+    }
+    .footer-marca h3 {
+        font-size: 20px; /* Reduce ligeramente el nombre de PixelCharms */
+    }
+    .footer-marca p {
+        font-size: 13px; /* Reduce ligeramente el slogan */
+    }
+    .footer-info p {
+        font-size: 12px; /* Reduce el texto de Instagram y "Hecho con amor" */
+    }
+}
+/*========================FIN - RESPONSIVE TABLET========================*/

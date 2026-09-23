@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!-- Indica al navegador que estamos utilizando HTML5 -->
+
+
+<html lang="es">
+<!-- Elemento raíz de nuestra página.
+     lang="es" indica que el contenido está en español -->
+
+
+<head>
+
+    <!-- =================================================
+         CONFIGURACIÓN DE LA PÁGINA
+    ================================================== -->
+
+    <meta charset="UTF-8">
+    <!-- Permite utilizar correctamente caracteres especiales:
+         tildes, ñ, símbolos, emojis, etc. -->
+
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <!-- Hace que el ancho de la página se adapte al ancho del dispositivo.
+         Es fundamental para el diseño responsive. -->
+
+    <title>PixelCharms Accesorios</title>
+    <!-- Texto que aparecerá en la pestaña del navegador -->
+
+    <!-- Conexión previa con Google Fonts para mejorar la velocidad de carga -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Conexión previa con el servidor donde se descargan las fuentes -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Importa la fuente Poppins con distintos grosores -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Conecta nuestro HTML con el archivo CSS externo -->
+
+</head>
+
+
+<body>
+
+    <!-- =================================================
+         TODO EL CONTENIDO VISIBLE DE LA PÁGINA
+    ================================================== -->
+
+    <!-- =================================================
+         ENCABEZADO
+    ================================================== -->
+
+    <header>
+
+        <!-- =================================================
+             IDENTIDAD DE PIXELCHARMS
+        ================================================== -->
+
+        <div class="marca">
+
+
+            <!-- Logo principal de PixelCharms -->
+            <img
+                src="./img/pixelcharms.png"
+                alt="Logo de PixelCharms Accesorios"
+            >
+
+
+            <!-- Contenedor del nombre y slogan de la marca -->
+            <div class="marca-texto">
+
+                <h1>PixelCharms Accesorios</h1>
+                <!-- Título principal de nuestra página -->
+
+
+                <p>Charms que suben tu nivel</p>
+                <!-- Slogan de PixelCharms -->
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             NAVEGACIÓN PRINCIPAL
+        ================================================== -->
+
+        <nav>
+            <!-- nav identifica semánticamente
+                 el menú principal de navegación -->
+
+
+            <ul>
+                <!-- Lista desordenada que contiene
+                     las opciones del menú -->
+
+
+                <li>
+                    <a href="#inicio">Inicio</a>
+                </li>
+                <!-- Lleva a la sección Inicio -->
+
+
+                <li>
+                    <a href="#productos">Productos</a>
+                </li>
+                <!-- Lleva a la sección Productos -->
+
+
+                <li>
+                    <a href="#resenas">Reseñas</a>
+                </li>
+                <!-- Lleva a la sección Reseñas -->
+
+
+                <li>
+                    <a href="#contacto">Contacto</a>
+                </li>
+                <!-- Lleva a la sección Contacto -->
+
+
+            </ul>
+
+
+        </nav>
+
+
+    </header>
+
+
+
+    <!-- =================================================
+         CONTENIDO PRINCIPAL
+    ================================================== -->
+
+    <main>
+
+
+
+        <!-- =============================================
+            SECCIÓN INICIO
+        ============================================== -->
+
+        <section id="inicio">
+
+            <!-- =================================================
+                HERO / PRESENTACIÓN PRINCIPAL
+            ================================================== -->
+
+            <div class="hero-contenido">
+
+                <!-- =============================================
+                    IMAGEN DESTACADA DEL HERO
+                ============================================== -->
+
+                <div class="hero-imagen">
+
+                    <!-- Imagen principal de presentación -->
+                    <img
+                        src="./img/hero-pixelcharms.jpg"
+                        alt="Accesorios de PixelCharms"
+                    >
+
+                    <!-- =========================================
+                        BOTÓN SOBRE LA IMAGEN
+                    ========================================== -->
+
+                    <a
+                        href="#productos"
+                        class="boton-principal"
+                    >
+                        Ver productos
+                    </a>
+
+                    <!--
+                        El botón se encuentra dentro de
+                        .hero-imagen porque queremos colocarlo
+                        visualmente SOBRE la fotografía.
+
+                        href="#productos" lleva al usuario
+                        directamente a la sección Productos.
+                    -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+       <!-- =====================================================
+            SECCIÓN PRODUCTOS
+        ====================================================== -->
+
+        <section id="productos" class="productos">
+
+            <!-- =================================================
+                ENCABEZADO DE LA SECCIÓN PRODUCTOS
+            ================================================== -->
+
+            <div class="productos-encabezado">
+
+                <!-- Título principal de la sección -->
+                <h2>Nuestros productos</h2>
+
+                <!-- Línea decorativa con los colores de PixelCharms -->
+                <span class="linea-productos"></span>
+
+                <!-- Texto introductorio de la sección -->
+                <p class="productos-intro">
+                    Encontrá el accesorio que mejor representa tu estilo.
+                </p>
+
+            </div>
+
+            <!-- Contenedor que agrupa todas las tarjetas de productos -->
+            <div class="productos-contenedor">
+
+                <!-- ========================= -->
+                <!-- TARJETA KIDS              -->
+                <!-- ========================= -->
+                <article class="producto-card">
+
+                    <!-- Imagen representativa de la colección Kids -->
+                    <img src="img/producto-kids.jpg"
+                        alt="Colección Kids de PixelCharms">
+
+                    <!-- Nombre de la categoría -->
+                    <h3>Kids 🌈</h3>
+
+                    <!-- Descripción de la categoría -->
+                    <p>
+                        Diseños divertidos, coloridos y llenos de personalidad.
+                    </p>
+
+                    <!-- Botón que llevará a la colección Kids -->
+                    <a href="#" class="boton-coleccion">
+                        Ver colección
+                    </a>
+
+                </article>
+
+
+                <!-- ========================= -->
+                <!-- TARJETA CUTE              -->
+                <!-- ========================= -->
+                <article class="producto-card">
+
+                    <!-- Imagen representativa de la colección Cute -->
+                    <img src="img/producto-cute.jpg"
+                        alt="Colección Cute de PixelCharms">
+
+                    <!-- Nombre de la categoría -->
+                    <h3>Cute 💖</h3>
+
+                    <!-- Descripción de la categoría -->
+                    <p>
+                        Accesorios dulces, delicados y llenos de color.
+                    </p>
+
+                    <!-- Botón que llevará a la colección Cute -->
+                    <a href="#" class="boton-coleccion">
+                        Ver colección
+                    </a>
+
+                </article>
+
+
+                <!-- ========================= -->
+                <!-- TARJETA GAMER             -->
+                <!-- ========================= -->
+                <article class="producto-card">
+
+                    <!-- Imagen representativa de la colección Gamer -->
+                    <img src="img/producto-gamer.jpg"
+                        alt="Colección Gamer de PixelCharms">
+
+                    <!-- Nombre de la categoría -->
+                    <h3>Gamer 🎮</h3>
+
+                    <!-- Descripción de la categoría -->
+                    <p>
+                        Diseños inspirados en el mundo gamer y geek.
+                    </p>
+
+                    <!-- Botón que llevará a la colección Gamer -->
+                    <a href="#" class="boton-coleccion">
+                        Ver colección
+                    </a>
+
+                </article>
+
+
+                <!-- ========================= -->
+                <!-- TARJETA PIEDRAS           -->
+                <!-- ========================= -->
+                <article class="producto-card">
+
+                    <!-- Imagen representativa de la colección Piedras -->
+                    <img src="img/producto-piedras.jpg"
+                        alt="Colección Piedras de PixelCharms">
+
+                    <!-- Nombre de la categoría -->
+                    <h3>Piedras 💎</h3>
+
+                    <!-- Descripción de la categoría -->
+                    <p>
+                        Accesorios creados con piedras naturales y estilo.
+                    </p>
+
+                    <!-- Botón que llevará a la colección Piedras -->
+                    <a href="#" class="boton-coleccion">
+                        Ver colección
+                    </a>
+
+                </article>
+
+
+                <!-- ========================= -->
+                <!-- TARJETA ELEGANCY          -->
+                <!-- ========================= -->
+                <article class="producto-card">
+
+                    <!-- Imagen representativa de la colección Elegancy -->
+                    <img src="img/producto-elegancy.jpg"
+                        alt="Colección Elegancy de PixelCharms">
+
+                    <!-- Nombre de la categoría -->
+                    <h3>Elegancy ✨</h3>
+
+                    <!-- Descripción de la categoría -->
+                    <p>
+                        Diseños elegantes para darle un toque especial a tu estilo.
+                    </p>
+
+                    <!-- Botón que llevará a la colección Elegancy -->
+                    <a href="#" class="boton-coleccion">
+                        Ver colección
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+        <!-- ================= FIN PRODUCTOS ================= -->
+
+        <!-- =====================================================
+            SECCIÓN RESEÑAS
+        ===================================================== -->
+
+        <section id="resenas" class="resenas">
+
+            <!-- Encabezado de la sección -->
+            <div class="resenas-encabezado">
+
+                <!-- Título principal -->
+                <h2>Lo que dicen de PixelCharms</h2>
+
+                <!-- Línea decorativa -->
+                <span class="linea-resenas"></span>
+
+                <!-- Texto introductorio -->
+                <p>
+                    Cada charm tiene una historia, y estas son algunas de ellas 💜
+                </p>
+
+            </div>
+
+
+            <!-- Contenedor de las reseñas.
+                Más adelante utilizaremos CSS Grid
+                para organizar estas tarjetas. -->
+            <div class="resenas-contenedor">
+
+
+                <!-- RESEÑA 1 -->
+                <article class="resena-card">
+
+                    <!-- Estrellas de valoración -->
+                    <div class="estrellas">
+                        ★★★★★
+                    </div>
+
+                    <!-- Comentario -->
+                    <p>
+                        “Me encantó mi pulsera. Los colores son hermosos
+                        y se nota que está hecha con muchísimo cariño.”
+                    </p>
+
+                    <!-- Nombre -->
+                    <h3>— Sofía</h3>
+
+                </article>
+
+
+                <!-- RESEÑA 2 -->
+                <article class="resena-card">
+
+                    <div class="estrellas">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        “Pedí un diseño personalizado y quedó exactamente
+                        como lo imaginaba. ¡Hermoso!”
+                    </p>
+
+                    <h3>— Valentina</h3>
+
+                </article>
+
+
+                <!-- RESEÑA 3 -->
+                <article class="resena-card">
+
+                    <div class="estrellas">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        “Los detalles del packaging son preciosos.
+                        Se nota el amor detrás de cada accesorio.”
+                    </p>
+
+                    <h3>— Camila</h3>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- ================= FIN SECCIÓN RESEÑAS ================= -->
+
+
+
+        <!-- ========================================= -->
+        <!-- SECCIÓN CONTACTO                          -->
+        <!-- ========================================= -->
+
+        <!-- id="contacto" permite llegar a esta sección desde el menú -->
+        <section id="contacto" class="contacto">
+
+            <!-- Encabezado de la sección -->
+            <div class="contacto-encabezado">
+
+                <!-- Título principal -->
+                <h2>Contactanos</h2>
+
+                <!-- Línea decorativa debajo del título -->
+                <div class="linea-decorativa"></div>
+
+                <!-- Texto introductorio -->
+                <p>¿Tenés una idea para tu charm? Nos encantaría conocerla 💜</p>
+
+            </div>
+
+            <!-- Contenedor principal de contacto -->
+            <!-- Más adelante vamos a usar Flexbox acá -->
+            <div class="contacto-contenedor">
+
+                <!-- =============================== -->
+                <!-- INFORMACIÓN DE CONTACTO          -->
+                <!-- =============================== -->
+                <div class="contacto-info">
+
+                    <h3>Hablemos 💜</h3>
+
+                    <p>
+                        Contanos qué tenés en mente y creemos juntos
+                        un accesorio que tenga tu estilo.
+                    </p>
+
+                    <!-- Redes sociales -->
+                    <div class="contacto-redes">
+
+                        <p>
+                            <strong>Instagram:</strong>
+                            @pixelcharmsaccesorios
+                        </p>
+
+                        <p>
+                            <strong>TikTok:</strong>
+                            PixelCharms Accesorios
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =============================== -->
+                <!-- FORMULARIO DE CONTACTO           -->
+                <!-- =============================== -->
+                <form class="contacto-formulario" action="https://formspree.io/f/xqpzrlow" method="POST">
+
+                    <!-- Campo nombre -->
+                    <div class="campo-formulario">
+
+                        <label for="nombre">Nombre</label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Tu nombre"
+                            required
+                        >
+
+                    </div>
+
+                    <!-- Campo correo electrónico -->
+                    <div class="campo-formulario">
+
+                        <label for="email">Correo electrónico</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="tunombre@email.com"
+                            required
+                        >
+
+                    </div>
+
+                    <!-- Campo mensaje -->
+                    <div class="campo-formulario">
+
+                        <label for="mensaje">Mensaje</label>
+
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            rows="5"
+                            placeholder="Contanos tu idea..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                    <!-- Botón del formulario -->
+                    <button type="submit" class="boton-contacto">
+                        Enviar mensaje
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         PIE DE PÁGINA
+    ================================================== -->
+
+    <footer>
+        <!-- Contenedor principal del pie de página -->
+        <div class="footer-contenido">
+
+            <!-- Identidad de PixelCharms -->
+            <div class="footer-marca">
+
+                <!-- Nombre de la marca -->
+                <h3>PixelCharms Accesorios</h3>
+
+                <!-- Slogan de la marca -->
+                <p>Charms que suben tu nivel</p>
+
+            </div>
+
+            <!-- Información adicional del pie de página -->
+            <div class="footer-info">
+
+                <!-- Redes sociales de PixelCharms -->
+                <p>
+                    Instagram: @pixelcharmsaccesorios
+                </p>
+
+                <!-- Mensaje de la marca -->
+                <p>
+                    Hecho con amor 💜
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+
+</html>
