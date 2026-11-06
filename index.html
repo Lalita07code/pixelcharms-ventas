@@ -128,6 +128,27 @@
 
         </nav>
 
+    <!-- ==========================================
+        CONTADOR DEL CARRITO DE COMPRAS
+    ========================================== -->
+
+    <!-- Contenedor que mostrará la cantidad
+        de productos agregados al carrito. -->
+    
+    <!-- Contenedor del carrito de compras -->
+    <div class="carrito-resumen">
+
+        <!-- Ícono del carrito -->
+        <span aria-hidden="true">🛒</span>
+
+        <!-- Cantidad de productos seleccionados -->
+        <span id="contador-carrito">0</span>
+
+        <!-- Total acumulado de la compra -->
+        <span id="total-carrito">$0</span>
+
+    </div>
+
 
     </header>
 
@@ -238,8 +259,12 @@
                         Diseños divertidos, coloridos y llenos de personalidad.
                     </p>
 
-                    <!-- Botón que llevará a la colección Kids -->
-                    <a href="#" class="boton-coleccion">
+                    <!-- Botón para mostrar los productos Kids -->
+                    <a
+                        href="#catalogo-productos"
+                        class="boton-coleccion"
+                        data-categoria="Kids"
+                    >
                         Ver colección
                     </a>
 
@@ -263,8 +288,12 @@
                         Accesorios dulces, delicados y llenos de color.
                     </p>
 
-                    <!-- Botón que llevará a la colección Cute -->
-                    <a href="#" class="boton-coleccion">
+                    <!-- Botón para mostrar los productos Cute -->
+                    <a
+                        href="#catalogo-productos"
+                        class="boton-coleccion"
+                        data-categoria="Cute"
+                    >
                         Ver colección
                     </a>
 
@@ -288,8 +317,12 @@
                         Diseños inspirados en el mundo gamer y geek.
                     </p>
 
-                    <!-- Botón que llevará a la colección Gamer -->
-                    <a href="#" class="boton-coleccion">
+                    <!-- Botón para mostrar los productos Gamer -->
+                    <a
+                        href="#catalogo-productos"
+                        class="boton-coleccion"
+                        data-categoria="Gamer"
+                    >
                         Ver colección
                     </a>
 
@@ -313,8 +346,12 @@
                         Accesorios creados con piedras naturales y estilo.
                     </p>
 
-                    <!-- Botón que llevará a la colección Piedras -->
-                    <a href="#" class="boton-coleccion">
+                    <!-- Botón para mostrar los productos de Piedras -->
+                    <a
+                        href="#catalogo-productos"
+                        class="boton-coleccion"
+                        data-categoria="Piedras"
+                    >
                         Ver colección
                     </a>
 
@@ -338,12 +375,33 @@
                         Diseños elegantes para darle un toque especial a tu estilo.
                     </p>
 
-                    <!-- Botón que llevará a la colección Elegancy -->
-                    <a href="#" class="boton-coleccion">
+                    <!-- Botón para mostrar los productos Elegancy -->
+                    <a
+                        href="#catalogo-productos"
+                        class="boton-coleccion"
+                        data-categoria="Elegancy"
+                    >
                         Ver colección
                     </a>
 
                 </article>
+
+            </div>
+            <!-- ============================================== -->
+            <!-- CATÁLOGO DINÁMICO DE PRODUCTOS DESDE MOCKAPI   -->
+            <!-- ============================================== -->
+
+            <!-- Título del catálogo de productos individuales -->
+            <h2>Catálogo de PixelCharms</h2>
+
+            <!-- Contenedor donde JavaScript mostrará los productos -->
+            <div id="catalogo-productos" class="productos-contenedor">
+
+                <!-- Mensaje inicial antes de seleccionar una colección -->
+            <p class="mensaje-bienvenida">
+                ✨ Elegí tu colección favorita y descubrí
+                los charms que tenemos para vos. 💜
+            </p>
 
             </div>
 

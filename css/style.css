@@ -767,3 +767,305 @@ footer {
     }
 }
 /*========================FIN - RESPONSIVE TABLET========================*/
+
+/* ==============================================
+   SEPARACIÓN ENTRE COLECCIONES Y CATÁLOGO
+============================================== */
+
+/* Seleccionamos el título del catálogo que aparece
+   inmediatamente después de las tarjetas de colección. */
+#productos > h2 {
+    /* Agregamos espacio encima del título. */
+    margin-top: 40px;
+
+    /* Dejamos un pequeño espacio debajo del título. */
+    margin-bottom: 20px;
+
+    /* Centramos el título horizontalmente. */
+    text-align: center;
+}
+
+
+/* ==============================================
+   CATÁLOGO DINÁMICO DE PIXELCHARMS
+============================================== */
+
+/* Contenedor exclusivo de los productos de MockAPI */
+#catalogo-productos {
+
+    /* Utilizamos Flexbox para distribuir las tarjetas. */
+    display: flex;
+
+    /* Permitimos que bajen a otra fila cuando no entren. */
+    flex-wrap: wrap;
+
+    /* Centramos las tarjetas horizontalmente. */
+    justify-content: center;
+
+    /* Dejamos espacio entre las tarjetas. */
+    gap: 25px;
+
+    /* Agregamos espacio lateral. */
+    padding: 0 20px;
+}
+
+/* Tarjetas exclusivas del catálogo dinámico */
+#catalogo-productos .producto-card {
+
+    /* Establecemos un ancho cómodo para cada producto. */
+    width: 250px;
+
+    /* Evitamos que Flexbox reduzca el ancho de las tarjetas. */
+    flex-shrink: 0;
+
+    /* Limitamos el ancho en pantallas pequeñas. */
+    max-width: 100%;
+}
+
+/* ==============================================
+   ANIMACIÓN FLOTANTE DEL CATÁLOGO
+============================================== */
+
+/* Definimos cómo aparecerán las tarjetas. */
+@keyframes aparecerFlotando {
+
+    /* Estado inicial de la animación. */
+    from {
+        /* La tarjeta comienza invisible. */
+        opacity: 0;
+
+        /* Comienza 25 píxeles más abajo. */
+        transform: translateY(25px);
+    }
+
+    /* Estado final de la animación. */
+    to {
+        /* La tarjeta termina completamente visible. */
+        opacity: 1;
+
+        /* Regresa a su posición original. */
+        transform: translateY(0);
+    }
+}
+
+/* Aplicamos la animación solo a las tarjetas del catálogo. */
+#catalogo-productos .producto-card {
+
+    /* Ejecutamos la animación durante 0,6 segundos. */
+    animation: aparecerFlotando 0.6s ease-out both;
+    
+    /* ==============================================
+    EFECTO CASCADA EN LAS TARJETAS
+    ============================================== */
+
+    /* Primera tarjeta: aparece inmediatamente. */
+    #catalogo-productos .producto-card:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    /* Segunda tarjeta: espera 0,1 segundos. */
+    #catalogo-productos .producto-card:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    /* Tercera tarjeta: espera 0,2 segundos. */
+    #catalogo-productos .producto-card:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+
+    /* Cuarta tarjeta: espera 0,3 segundos. */
+    #catalogo-productos .producto-card:nth-child(4) {
+        animation-delay: 0.3s;
+    }
+
+    /* Quinta tarjeta: espera 0,4 segundos. */
+    #catalogo-productos .producto-card:nth-child(5) {
+        animation-delay: 0.4s;
+    }
+
+    /* Sexta tarjeta: espera 0,5 segundos. */
+    #catalogo-productos .producto-card:nth-child(6) {
+        animation-delay: 0.5s;
+    }
+
+    /* Séptima tarjeta: espera 0,6 segundos. */
+    #catalogo-productos .producto-card:nth-child(7) {
+        animation-delay: 0.6s;
+    }
+
+}
+
+/* Respetamos a quienes prefieren reducir las animaciones. */
+@media (prefers-reduced-motion: reduce) {
+    #catalogo-productos .producto-card {
+        animation: none;
+    }
+}
+
+
+/* ==============================================
+   ALINEACIÓN DEL PRECIO Y STOCK DEL CATÁLOGO
+============================================== */
+
+/* Organizamos verticalmente el contenido de cada tarjeta. */
+#catalogo-productos .producto-card {
+
+    /* Convertimos la tarjeta en un contenedor Flexbox. */
+    display: flex;
+
+    /* Colocamos sus elementos uno debajo del otro. */
+    flex-direction: column;
+
+    /* Dejamos espacio inferior dentro de la tarjeta. */
+    padding-bottom: 20px;
+}
+
+/* Agrupamos el precio y el stock en la parte inferior. */
+#catalogo-productos .producto-detalles {
+
+    /* Empuja este bloque hacia el final de la tarjeta. */
+    margin-top: auto;
+
+    /* Agregamos separación respecto de la descripción. */
+    padding-top: 20px;
+
+    /* Dejamos un pequeño espacio debajo del stock. */
+    padding-bottom: 15px;
+}
+
+/* ==============================================
+   DESCRIPCIONES DEL CATÁLOGO
+============================================== */
+
+/* Modificamos únicamente las descripciones
+   de las tarjetas de productos de MockAPI. */
+#catalogo-productos .producto-descripcion {
+
+    /* Reducimos el tamaño de la letra a 14 píxeles. */
+    font-size: 12px;
+}
+
+
+/* ==============================================
+   BOTÓN AÑADIR AL CARRITO - PIXELCHARMS
+============================================== */
+
+/* Aplicamos estilos únicamente a los botones
+   del carrito dentro del catálogo de productos. */
+#catalogo-productos .boton-agregar-carrito {
+
+    /* Separamos el botón del precio y stock. */
+    margin-top: 20px;
+
+    /* Agregamos espacio dentro del botón. */
+    padding: 12px 18px;
+
+    /* Color violeta de fondo. */
+    background-color: #8e5bb5;
+
+    /* Texto blanco. */
+    color: white;
+
+    /* Eliminamos el borde predeterminado. */
+    border: none;
+
+    /* Redondeamos las esquinas. */
+    border-radius: 10px;
+
+    /* Tamaño de letra. */
+    font-size: 14px;
+
+    /* Texto un poco más destacado. */
+    font-weight: 600;
+
+    /* Mostramos una mano al pasar el mouse. */
+    cursor: pointer;
+
+    /* Suavizamos los cambios visuales. */
+    transition: background-color 0.3s ease,
+                transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre el botón. */
+#catalogo-productos .boton-agregar-carrito:hover {
+
+    /* Oscurecemos ligeramente el violeta. */
+    background-color: #704293;
+
+    /* Elevamos suavemente el botón. */
+    transform: translateY(-3px);
+}
+
+
+/* ==============================================
+   CONTADOR DEL CARRITO - PIXELCHARMS
+============================================== */
+
+/* Diseñamos el contenedor del carrito. */
+.carrito-resumen {
+
+    /* Colocamos el ícono y el número uno al lado del otro. */
+    display: flex;
+
+    /* Centramos verticalmente los elementos. */
+    align-items: center;
+
+    /* Separamos el ícono del contador. */
+    gap: 10px;
+
+    /* Agregamos espacio dentro del contenedor. */
+    padding: 10px 16px;
+
+    /* Aplicamos el color violeta de nuestra tienda. */
+    background-color: #8e5bb5;
+
+    /* Colocamos el texto en blanco. */
+    color: white;
+
+    /* Redondeamos las esquinas. */
+    border-radius: 12px;
+
+    /* Destacamos el contenido. */
+    font-weight: 600;
+}
+
+/* Diseñamos el número del contador. */
+#contador-carrito {
+
+    /* Fondo blanco para destacar la cantidad. */
+    background-color: white;
+
+    /* Número en violeta. */
+    color: #704293;
+
+    /* Tamaño de letra. */
+    font-size: 14px;
+
+    /* Ancho mínimo del contador. */
+    min-width: 25px;
+
+    /* Altura mínima del contador. */
+    min-height: 25px;
+
+    /* Centramos el número. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Forma circular. */
+    border-radius: 50%;
+}
+
+/* ==============================================
+   TAMAÑO DEL ÍCONO DEL CARRITO
+============================================== */
+
+/* Modificamos únicamente el ícono del carrito. */
+.carrito-resumen span[aria-hidden="true"] {
+
+    /* Aumentamos el tamaño del ícono. */
+    font-size: 24px;
+
+    /* Centramos verticalmente el ícono. */
+    line-height: 1;
+}
