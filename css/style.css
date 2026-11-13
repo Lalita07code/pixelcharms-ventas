@@ -1069,3 +1069,783 @@ footer {
     /* Centramos verticalmente el ícono. */
     line-height: 1;
 }
+
+
+/* ==========================================
+          CARRITO LATERAL DESLIZANTE
+========================================== */
+
+/* Fondo que aparecerá detrás del carrito. */
+.fondo-carrito {
+
+    /* Lo fijamos a toda la pantalla. */
+    position: fixed;
+    inset: 0;
+
+    /* Oscurecemos suavemente la tienda. */
+    background-color: rgba(0, 0, 0, 0.35);
+
+    /* Inicialmente estará invisible. */
+    opacity: 0;
+    visibility: hidden;
+
+    /* Evitamos que bloquee los clics mientras esté oculto. */
+    pointer-events: none;
+
+    /* Lo colocamos encima de la tienda. */
+    z-index: 999;
+
+    /* Suavizamos la aparición del fondo. */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Panel principal del carrito. */
+.panel-carrito {
+
+    /* Lo fijamos al lado derecho de la pantalla. */
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    /* Ocupa toda la altura visible. */
+    height: 100dvh;
+
+    /* Ancho del panel, adaptable a celulares. */
+    width: min(400px, 100%);
+
+    /* Fondo blanco. */
+    background-color: #ffffff;
+
+    /* Organizamos su contenido verticalmente. */
+    display: flex;
+    flex-direction: column;
+
+    /* Permitimos desplazamiento interno si hace falta. */
+    overflow-y: auto;
+
+    /* Se mostrará por encima del fondo oscuro. */
+    z-index: 1000;
+
+    /* Inicialmente lo desplazamos fuera de la pantalla. */
+    transform: translateX(100%);
+
+    /* Animación de entrada y salida. */
+    transition: transform 0.35s ease;
+
+    /* Sombra para separarlo visualmente de la tienda. */
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Estado visible del carrito. */
+.panel-carrito.abierto {
+
+    /* Devolvemos el panel a su posición. */
+    transform: translateX(0);
+}
+
+/* Estado visible del fondo. */
+.fondo-carrito.activo {
+
+    /* Mostramos el fondo semitransparente. */
+    opacity: 1;
+    visibility: visible;
+
+    /* Permitimos cerrar el carrito haciendo clic afuera. */
+    pointer-events: auto;
+}
+
+/* ==========================================
+     ENCABEZADO DEL CARRITO LATERAL
+========================================== */
+
+/* Organizamos el título y el botón de cerrar. */
+.carrito-cabecera {
+
+    /* Colocamos los elementos uno al lado del otro. */
+    display: flex;
+
+    /* Centramos los elementos verticalmente. */
+    align-items: center;
+
+    /* Separamos el título y el botón X. */
+    justify-content: space-between;
+
+    /* Agregamos espacio interior. */
+    padding: 22px 24px;
+
+    /* Azul ligeramente más claro que el encabezado principal. */
+    background-color: #254A65;
+
+    /* Mostramos el texto en blanco. */
+    color: white;
+}
+
+/* Personalizamos el título del carrito. */
+.carrito-cabecera h2 {
+
+    /* Eliminamos márgenes que puedan desalinearlo. */
+    margin: 0;
+
+    /* Definimos el tamaño del título. */
+    font-size: 24px;
+
+    /* Aplicamos un grosor destacado. */
+    font-weight: 700;
+
+    /* Mantenemos el título alineado a la izquierda. */
+    text-align: left;
+
+}
+
+/* Personalizamos el botón de cerrar. */
+#cerrar-carrito {
+
+    /* Eliminamos el fondo predeterminado. */
+    background: transparent;
+
+    /* Quitamos los bordes predeterminados. */
+    border: none;
+
+    /* Mostramos la X en blanco. */
+    color: white;
+
+    /* Aumentamos su tamaño. */
+    font-size: 26px;
+
+    /* Indicamos que es un elemento interactivo. */
+    cursor: pointer;
+
+    /* Damos espacio alrededor de la X. */
+    padding: 5px 10px;
+}
+
+/* Efecto visual al pasar el cursor sobre la X. */
+#cerrar-carrito:hover {
+
+    /* Cambiamos suavemente el color. */
+    color: #c89bea;
+}
+
+
+/* ==========================================
+      INTERIOR DEL CARRITO LATERAL
+========================================== */
+
+/* Contenedor donde aparecerán los productos. */
+.carrito-productos {
+
+    /* Ocupamos el espacio disponible del panel. */
+    flex: 1;
+
+    /* Agregamos espacio interior. */
+    padding: 24px;
+
+    /* Permitimos desplazarnos si hay muchos productos. */
+    overflow-y: auto;
+
+    /* Fondo blanco para mantener un diseño limpio. */
+    background-color: #ffffff;
+}
+
+/* Mensaje que aparece cuando no hay productos. */
+.carrito-vacio {
+
+    /* Centramos el texto horizontalmente. */
+    text-align: center;
+
+    /* Color violeta de PixelCharms. */
+    color: #704293;
+
+    /* Tamaño cómodo para leer. */
+    font-size: 16px;
+
+    /* Espacio superior para separarlo del encabezado. */
+    margin-top: 50px;
+
+    /* Mejoramos la separación entre líneas. */
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   PASO 41: PIE DEL CARRITO LATERAL
+========================================== */
+
+/* Contenedor inferior del carrito. */
+.carrito-pie {
+
+    /* Agregamos espacio interior. */
+    padding: 24px;
+
+    /* Separamos el resumen del listado de productos. */
+    border-top: 1px solid #e8e0ee;
+
+    /* Aplicamos un fondo suave. */
+    background-color: #faf7fc;
+
+    /* Evitamos que esta sección se comprima. */
+    flex-shrink: 0;
+}
+
+/* Textos del subtotal y total. */
+.carrito-pie p {
+
+    /* Colocamos la etiqueta y el importe en extremos opuestos. */
+    display: flex;
+    justify-content: space-between;
+
+    /* Centramos verticalmente. */
+    align-items: center;
+
+    /* Separamos cada fila. */
+    margin: 0 0 12px;
+
+    /* Definimos el tamaño del texto. */
+    font-size: 16px;
+}
+
+/* Destacamos el importe total. */
+#carrito-total {
+
+    /* Aplicamos el violeta de PixelCharms. */
+    color: #704293;
+
+    /* Aumentamos el tamaño del importe. */
+    font-size: 22px;
+}
+
+/* Estilos generales para los tres botones del pie. */
+.carrito-pie button {
+
+    /* Cada botón ocupa todo el ancho disponible. */
+    width: 100%;
+
+    /* Agregamos espacio interior. */
+    padding: 13px 12px;
+
+    /* Separamos los botones entre sí. */
+    margin-top: 10px;
+
+    /* Redondeamos las esquinas. */
+    border-radius: 10px;
+
+    /* Indicamos que son interactivos. */
+    cursor: pointer;
+
+    /* Mejoramos la legibilidad. */
+    font-size: 14px;
+    font-weight: 600;
+
+    /* Suavizamos los cambios de color. */
+    transition: background-color 0.2s ease;
+}
+
+/* ==========================================
+   PASO 42: BOTONES DEL CARRITO
+========================================== */
+
+/* Botón para finalizar el pedido por WhatsApp. */
+#finalizar-whatsapp {
+
+    /* Verde característico de WhatsApp. */
+    background-color: #25D366;
+
+    /* Texto blanco para generar contraste. */
+    color: #ffffff;
+
+    /* Eliminamos el borde predeterminado. */
+    border: none;
+}
+
+/* Efecto al pasar el cursor sobre WhatsApp. */
+#finalizar-whatsapp:hover {
+
+    /* Verde ligeramente más oscuro. */
+    background-color: #1ebe5d;
+}
+
+/* Botón para seguir comprando. */
+#seguir-comprando {
+
+    /* Violeta de nuestra tienda. */
+    background-color: #9257b8;
+
+    /* Texto blanco. */
+    color: #ffffff;
+
+    /* Eliminamos el borde predeterminado. */
+    border: none;
+}
+
+/* Efecto al pasar el cursor. */
+#seguir-comprando:hover {
+
+    /* Violeta más intenso. */
+    background-color: #704293;
+}
+
+/* Botón para vaciar el carrito. */
+#vaciar-carrito {
+
+    /* Fondo lavanda muy suave. */
+    background-color: #f0eaf4;
+
+    /* Texto violeta. */
+    color: #704293;
+
+    /* Borde sutil. */
+    border: 1px solid #d9c8e5;
+}
+
+/* Efecto al pasar el cursor sobre Vaciar carrito. */
+#vaciar-carrito:hover {
+
+    /* Oscurecemos suavemente el fondo. */
+    background-color: #e5d8ed;
+}
+
+
+/* ==========================================
+   PASO 44: PRODUCTOS DEL CARRITO
+========================================== */
+
+/* Tarjeta individual de cada producto. */
+.carrito-item {
+
+    /* Colocamos imagen y nombre uno al lado del otro. */
+    display: flex;
+
+    /* Centramos verticalmente los elementos. */
+    align-items: center;
+
+    /* Separamos la imagen del nombre. */
+    gap: 15px;
+
+    /* Agregamos espacio alrededor de cada producto. */
+    padding: 12px 0;
+
+    /* Línea divisoria entre productos. */
+    border-bottom: 1px solid #eee5f2;
+}
+
+/* Imagen de cada producto del carrito. */
+.carrito-item img {
+
+    /* Definimos el ancho de la imagen. */
+    width: 75px;
+
+    /* Definimos su altura. */
+    height: 75px;
+
+    /* Evitamos que se deforme. */
+    object-fit: cover;
+
+    /* Redondeamos las esquinas. */
+    border-radius: 10px;
+
+    /* Evitamos que la imagen se comprima. */
+    flex-shrink: 0;
+}
+
+/* Nombre del producto. */
+.carrito-item p {
+
+    /* Color oscuro de nuestra tienda. */
+    color: #0a1d2d;
+
+    /* Tamaño del texto. */
+    font-size: 14px;
+
+    /* Destacamos el nombre. */
+    font-weight: 600;
+
+    /* Eliminamos márgenes predeterminados. */
+    margin: 0;
+}
+
+/* ==========================================
+   ALINEACIÓN DEL NOMBRE Y PRECIO DEL CARRITO
+========================================== */
+
+/* Contenedor del nombre y precio. */
+.carrito-item-detalles {
+
+    /* Ocupa el espacio disponible junto a la imagen. */
+    flex: 1;
+
+    /* Permite que el nombre se ajuste al ancho. */
+    min-width: 0;
+
+    /* Colocamos nombre y precio en una misma fila. */
+    display: flex;
+
+    /* Centramos verticalmente ambos elementos. */
+    align-items: center;
+
+    /* Separamos el nombre del precio. */
+    gap: 12px;
+}
+
+/* Nombre del producto. */
+.carrito-item-detalles > p:first-child {
+
+    /* Permite que el nombre ocupe el espacio disponible. */
+    flex: 1;
+
+    /* Evita que el texto empuje el precio. */
+    min-width: 0;
+}
+
+/* Precio del producto. */
+.carrito-item-detalles .carrito-item-precio {
+
+    /* Impide que el precio se comprima. */
+    flex-shrink: 0;
+
+    /* Alineamos todos los precios a la derecha. */
+    text-align: right;
+
+    /* Eliminamos márgenes adicionales. */
+    margin: 0;
+}
+
+
+/* ==========================================
+   CONTROLES DE CANTIDAD DEL CARRITO
+========================================== */
+
+/* Organizamos los detalles del producto. */
+.carrito-item-detalles {
+
+    /* Colocamos los elementos en una cuadrícula. */
+    display: grid;
+
+    /* El nombre ocupa el espacio disponible. */
+    /* El precio conserva el espacio que necesita. */
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    /* Separamos las columnas y las filas. */
+    gap: 12px;
+
+    /* Alineamos los elementos desde arriba. */
+    align-items: start;
+}
+
+/* Ubicamos el nombre arriba a la izquierda. */
+.carrito-item-detalles > p:first-child {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+}
+
+/* Ubicamos el precio arriba a la derecha. */
+.carrito-item-detalles .carrito-item-precio {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Ubicamos los controles debajo del nombre. */
+.carrito-cantidad {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Diseñamos los botones + y −. */
+.carrito-cantidad button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #d9c6e8;
+    border-radius: 8px;
+    background-color: #f4ecf8;
+    color: #704293;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Destacamos los botones al pasar el mouse. */
+.carrito-cantidad button:hover {
+    background-color: #e8d5f3;
+}
+
+/* Centramos el número de unidades. */
+.carrito-cantidad span {
+    min-width: 18px;
+    text-align: center;
+    font-weight: bold;
+    color: #254A65;
+}
+
+/* ==========================================
+   NOTIFICACIONES DE PIXELCHARMS
+========================================== */
+
+/* Diseñamos el mensaje personalizado. */
+.notificacion-carrito {
+    /* Fondo violeta suave. */
+    background-color: #f3e8fa;
+
+    /* Color del texto. */
+    color: #704293;
+
+    /* Línea lateral decorativa. */
+    border-left: 4px solid #9155b5;
+
+    /* Espacio interior. */
+    padding: 14px 16px;
+
+    /* Espacio exterior. */
+    margin: 15px 20px;
+
+    /* Bordes redondeados. */
+    border-radius: 10px;
+
+    /* Tipografía. */
+    font-size: 14px;
+    line-height: 1.5;
+
+    /* Sombra suave. */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Mantenemos oculta la notificación
+   cuando tenga el atributo hidden. */
+.notificacion-carrito[hidden] {
+    display: none;
+}
+
+
+/* ==========================================
+   PASO 61: PAPELERA DEL CARRITO
+========================================== */
+
+/* Diseñamos el botón para eliminar productos. */
+.carrito-eliminar {
+
+    /* Definimos un ancho pequeño. */
+    width: 30px;
+
+    /* Igualamos su altura con los botones de cantidad. */
+    height: 30px;
+
+    /* Aplicamos un fondo violeta suave. */
+    background-color: #f4ecf8;
+
+    /* Agregamos un borde delicado. */
+    border: 1px solid #d9c6e8;
+
+    /* Redondeamos las esquinas. */
+    border-radius: 8px;
+
+    /* Centramos el ícono de la papelera. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Definimos el tamaño del ícono. */
+    font-size: 15px;
+
+    /* Mostramos la manito al pasar el mouse. */
+    cursor: pointer;
+
+    /* Suavizamos los cambios visuales. */
+    transition: background-color 0.3s ease;
+}
+
+/* Cambiamos el fondo cuando pasamos el mouse. */
+.carrito-eliminar:hover {
+
+    /* Aplicamos un violeta ligeramente más intenso. */
+    background-color: #e8d5f3;
+}
+
+/* ==============================================
+   MODAL DE CONFIRMACIÓN - PIXELCHARMS
+============================================== */
+
+/* Fondo oscuro detrás de la ventana. */
+.fondo-confirmacion {
+
+    /* Fijamos el fondo a toda la pantalla. */
+    position: fixed;
+
+    /* Cubrimos los cuatro extremos de la pantalla. */
+    inset: 0;
+
+    /* Oscurecemos suavemente el contenido de la tienda. */
+    background-color: rgba(10, 27, 42, 0.55);
+
+    /* Lo colocamos por encima del carrito lateral. */
+    z-index: 2000;
+}
+
+/* Ventana principal de confirmación. */
+.modal-confirmacion {
+
+    /* Fijamos la ventana en la pantalla. */
+    position: fixed;
+
+    /* La ubicamos en el centro horizontal y vertical. */
+    top: 50%;
+    left: 50%;
+
+    /* Corregimos su posición para centrarla exactamente. */
+    transform: translate(-50%, -50%);
+
+    /* Permitimos que se adapte a distintas pantallas. */
+    width: 90%;
+    max-width: 420px;
+
+    /* Agregamos espacio interior. */
+    padding: 30px 25px;
+
+    /* Utilizamos un fondo blanco. */
+    background-color: #ffffff;
+
+    /* Redondeamos las esquinas. */
+    border-radius: 20px;
+
+    /* Agregamos una sombra suave. */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.20);
+
+    /* Centramos los textos. */
+    text-align: center;
+
+    /* Colocamos la ventana por encima del fondo oscuro. */
+    z-index: 2001;
+}
+
+/* Ocultamos el fondo y la ventana cuando tengan hidden. */
+.fondo-confirmacion[hidden],
+.modal-confirmacion[hidden] {
+
+    /* Evitamos que aparezcan antes de solicitar confirmación. */
+    display: none;
+}
+
+/* Ícono decorativo. */
+.modal-icono {
+
+    /* Aumentamos el tamaño del ícono. */
+    font-size: 42px;
+
+    /* Separamos el ícono del título. */
+    margin-bottom: 15px;
+}
+
+/* Título de la ventana. */
+.modal-confirmacion h2 {
+
+    /* Aplicamos el azul de PixelCharms. */
+    color: #254A65;
+
+    /* Definimos el tamaño del título. */
+    font-size: 22px;
+
+    /* Separamos el título del mensaje. */
+    margin-bottom: 15px;
+}
+
+/* Mensaje de confirmación. */
+.modal-confirmacion p {
+
+    /* Utilizamos un gris oscuro para facilitar la lectura. */
+    color: #52616b;
+
+    /* Definimos el tamaño del texto. */
+    font-size: 14px;
+
+    /* Mejoramos la separación entre líneas. */
+    line-height: 1.6;
+
+    /* Separamos el mensaje de los botones. */
+    margin-bottom: 25px;
+}
+
+/* Contenedor de los botones. */
+.modal-botones {
+
+    /* Colocamos los botones uno al lado del otro. */
+    display: flex;
+
+    /* Dejamos espacio entre ambos botones. */
+    gap: 12px;
+}
+
+/* Estilos compartidos por los dos botones. */
+.modal-botones button {
+
+    /* Ambos botones ocupan el mismo espacio. */
+    flex: 1;
+
+    /* Agregamos espacio interior. */
+    padding: 12px 10px;
+
+    /* Redondeamos sus esquinas. */
+    border-radius: 10px;
+
+    /* Eliminamos el borde predeterminado. */
+    border: none;
+
+    /* Utilizamos la fuente de nuestra tienda. */
+    font-family: inherit;
+
+    /* Definimos el tamaño del texto. */
+    font-size: 13px;
+
+    /* Destacamos el texto. */
+    font-weight: 600;
+
+    /* Mostramos la manito al pasar el cursor. */
+    cursor: pointer;
+}
+
+/* Botón para conservar los productos. */
+#cancelar-vaciado {
+
+    /* Fondo lavanda suave. */
+    background-color: #f0eaf4;
+
+    /* Texto violeta. */
+    color: #704293;
+}
+
+/* Botón para confirmar el vaciado. */
+#confirmar-vaciado {
+
+    /* Violeta principal de PixelCharms. */
+    background-color: #704293;
+
+    /* Texto blanco. */
+    color: #ffffff;
+}
+
+/* Efecto al pasar el cursor sobre cancelar. */
+#cancelar-vaciado:hover {
+
+    /* Oscurecemos ligeramente el fondo. */
+    background-color: #e5d8ed;
+}
+
+/* Efecto al pasar el cursor sobre confirmar. */
+#confirmar-vaciado:hover {
+
+    /* Aplicamos un violeta más intenso. */
+    background-color: #5b347a;
+}
+
+/* Adaptación para pantallas pequeñas. */
+@media (max-width: 480px) {
+
+    /* Organizamos los botones verticalmente. */
+    .modal-botones {
+        flex-direction: column;
+    }
+}
+

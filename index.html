@@ -657,6 +657,145 @@
         </div>
 
     </footer>
+    
+    <!-- ==========================================
+        CARRITO LATERAL DE PIXELCHARMS
+    ========================================== -->
+
+    <!-- Fondo semitransparente que aparecerá detrás del carrito. -->
+    <div id="fondo-carrito" class="fondo-carrito"></div>
+
+    <!-- Panel lateral donde mostraremos los productos elegidos. -->
+    <aside
+        id="panel-carrito"
+        class="panel-carrito"
+        aria-label="Carrito de compras"
+    >
+
+        <!-- Encabezado del carrito. -->
+        <div class="carrito-cabecera">
+
+            <!-- Título del panel. -->
+            <h2>Mi carrito 💜</h2>
+
+            <!-- Botón para cerrar el carrito. -->
+            <button
+                type="button"
+                id="cerrar-carrito"
+                aria-label="Cerrar carrito"
+            >
+                ✕
+            </button>
+
+        </div>
+
+        <!-- ==========================================
+            NOTIFICACIONES DE PIXELCHARMS
+        ========================================== -->
+
+        <!-- Contenedor para mostrar mensajes personalizados. -->
+        <div
+            id="notificacion-carrito"
+            class="notificacion-carrito"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            hidden
+        >
+            <!-- Aquí JavaScript colocará el mensaje. -->
+        </div>
+
+        <!-- Contenedor donde JavaScript mostrará los productos. -->
+        <div id="carrito-productos" class="carrito-productos">
+
+            <!-- Mensaje inicial cuando el carrito está vacío. -->
+            <p class="carrito-vacio">
+                Tu carrito está esperando sus primeros charms 💜
+            </p>
+
+        </div>
+
+        <!-- Parte inferior del carrito. -->
+        <div class="carrito-pie">
+
+            <!-- Subtotal de los productos seleccionados. -->
+            <p>
+                Subtotal:
+                <span id="carrito-subtotal">$0</span>
+            </p>
+
+            <!-- Total de la compra. -->
+            <p>
+                Total:
+                <strong id="carrito-total">$0</strong>
+            </p>
+
+            <!-- Botón para finalizar el pedido por WhatsApp. -->
+            <button type="button" id="finalizar-whatsapp">
+                Finalizar pedido por WhatsApp
+            </button>
+
+            <!-- Botón para cerrar el panel y seguir comprando. -->
+            <button type="button" id="seguir-comprando">
+                Seguir comprando
+            </button>
+
+            <!-- Botón para eliminar todos los productos del carrito. -->
+            <button type="button" id="vaciar-carrito">
+                🗑️ Vaciar carrito
+            </button>
+
+        </div>
+        
+        
+
+    </aside>
+    <!-- ==========================================
+        VENTANA DE CONFIRMACIÓN - VACIAR CARRITO
+    ========================================== -->
+
+    <!-- Fondo oscuro de la ventana de confirmación -->
+    <div id="fondo-confirmacion" class="fondo-confirmacion" hidden></div>
+
+    <!-- Ventana personalizada de PixelCharms -->
+    <div
+        id="modal-confirmacion"
+        class="modal-confirmacion"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-confirmacion"
+        hidden
+    >
+        <!-- Ícono decorativo -->
+        <div class="modal-icono">🛍️</div>
+
+        <!-- Título de la confirmación -->
+        <h2 id="titulo-confirmacion">
+            ¿Querés vaciar tu carrito?
+        </h2>
+
+        <!-- Mensaje para el cliente -->
+        <p>
+            Tus charms seleccionados se eliminarán del carrito.
+            ¿Estás seguro de que querés continuar? 💜
+        </p>
+
+        <!-- Botones de decisión -->
+        <div class="modal-botones">
+
+            <!-- Permite cancelar sin eliminar productos -->
+            <button type="button" id="cancelar-vaciado">
+                Conservar mis charms
+            </button>
+
+            <!-- Confirma la eliminación de los productos -->
+            <button type="button" id="confirmar-vaciado">
+                Sí, vaciar
+            </button>
+
+        </div>
+
+    </div>
 
     <!-- Conexión con el archivo JavaScript externo -->
     <script src="./js/script.js"></script>
