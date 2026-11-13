@@ -1,19 +1,19 @@
 "use strict";
 
-// =====================================================
+// ===============================================
 // PROYECTO FINAL - PIXELCHARMS ACCESORIOS
-// =====================================================
-// Autor: PixelCharms - Laura Rocha
+// ===============================================
+// Autor: PixelCharms, Laura Virginia Rocha Malaver
 
 // Este archivo contendrá las funcionalidades
 // interactivas de nuestra tienda online.
 
-// ==============================================
+// ===============================================
 // CONFIGURACIÓN DE LA API DE PIXELCHARMS
-// ==============================================
+// ===============================================
 
 // Se guarda la dirección de la API de MockAPI.
-// Esta dirección contiene los productos de PixelCharms.
+// Esta dirección contiene los productos de PixelCharms:
 const API_URL = "https://6aeb6319ee39618d7bf8455d.mockapi.io/api/v1/productos";
 
 
@@ -38,8 +38,6 @@ const carritoGuardado = localStorage.getItem("pixelcharms_carrito");
 // Si no hay nada guardado, comenzamos con un array vacío.
 let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
 
-
-
 // ==============================================
 // GUARDAR CARRITO EN LOCALSTORAGE
 // ==============================================
@@ -62,7 +60,6 @@ let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
  // comprobar que inicialmente está vacío.
  console.log("Carrito inicial:", carrito);
 
- 
  // ==============================================
  //     ACTUALIZAR RESUMEN DEL CARRITO
  // ==============================================
@@ -133,7 +130,6 @@ let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
         return;
     }
 
-
      // Recorremos los productos recibidos.
      productos.forEach(function(producto) {
 
@@ -164,6 +160,36 @@ let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
 
 
                 <!-- Cerramos el contenedor del precio y stock -->
+                </div>
+
+                <!-- ==========================================
+                    SELECTOR DE CANTIDAD DEL PRODUCTO
+                ========================================== -->
+
+                <!-- Contenedor de los controles de cantidad -->
+                <div class="producto-cantidad">
+
+                    <!-- Botón para disminuir la cantidad -->
+                    <button
+                        type="button"
+                        class="cantidad-menos"
+                        aria-label="Disminuir cantidad"
+                    >
+                        −
+                    </button>
+
+                    <!-- Muestra la cantidad seleccionada inicialmente -->
+                    <span class="cantidad-seleccionada">1</span>
+
+                    <!-- Botón para aumentar la cantidad -->
+                    <button
+                        type="button"
+                        class="cantidad-mas"
+                        aria-label="Aumentar cantidad"
+                    >
+                        +
+                    </button>
+
                 </div>
 
                 <!-- Botón para añadir el producto al carrito -->
@@ -288,121 +314,315 @@ let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
  // Seleccionamos el contenedor del catálogo.
  const catalogo = document.querySelector("#catalogo-productos");
 
- // Escuchamos los clics dentro del catálogo.
- catalogo.addEventListener("click", function(evento) {
 
-     // Comprobamos si el clic fue sobre un botón
-     // que tenga la clase "boton-agregar-carrito".
-     const boton = evento.target.closest(".boton-agregar-carrito");
+/* ==============================================
+   CONTROL DE CANTIDADES EN LAS TARJETAS
+============================================== */
 
-     // Si el clic no fue sobre un botón del carrito,
-     // terminamos la ejecución.
-     if (!boton) {
-         return;
-     }
+// Escuchamos los clics sobre los controles + y −.
+catalogo.addEventListener("click", function(evento) {
 
-     // Obtenemos el ID del producto seleccionado.
-     const idProducto = boton.dataset.id;
+    // Identificamos si se presionó alguno de los dos botones.
+    const botonCantidad = evento.target.closest(
+        ".cantidad-mas, .cantidad-menos"
+    );
 
-    // Revisamos qué datos contiene el botón.
-    console.log("Datos del botón:", boton.dataset);
-
-     // Mostramos el ID en la consola.
-     console.log("Producto seleccionado:", idProducto);
-     
-    // ==============================================
-    // BUSCAR Y AGREGAR EL PRODUCTO AL CARRITO
-    // ==============================================
-
-    // Buscamos en nuestra lista general el producto
-    // cuyo ID coincide con el botón seleccionado.
-    const productoSeleccionado = listaProductos.find(function(producto) {
-
-        // Comparamos los identificadores.
-        return producto.id === idProducto;
-
-    });
-
-    // Comprobamos que encontramos el producto.
-    if (!productoSeleccionado) {
-
-        // Mostramos un aviso si el producto no existe.
-        console.log("No se encontró el producto.");
-
-        // Detenemos la ejecución.
+    // Si no se presionó + ni −, finalizamos este evento.
+    if (!botonCantidad) {
         return;
     }
-   
-    // Buscamos si el producto ya existe en el carrito.
-    const productoExistente = carrito.find(function(producto) {
 
-        // Comparamos los identificadores de los productos.
-        return producto.id === productoSeleccionado.id;
+    // Identificamos la tarjeta del producto.
+    const tarjeta = botonCantidad.closest(".producto-card");
+
+    // Buscamos el número de unidades que aparece en pantalla.
+    const cantidadElemento = tarjeta.querySelector(".cantidad-seleccionada");
+
+    // Convertimos la cantidad a un número.
+    let cantidad = Number(cantidadElemento.textContent);
+
+    // Buscamos el botón Añadir al carrito de esta tarjeta.
+    const botonAgregar = tarjeta.querySelector(".boton-agregar-carrito");
+
+    // Buscamos los datos del producto en nuestra lista.
+    const producto = listaProductos.find(function(producto) {
+
+        // Comparamos los identificadores.
+        return String(producto.id) === botonAgregar.dataset.id;
 
     });
 
-    // Comprobamos si el producto ya está agregado.
-    if (productoExistente) {
+    // Si el producto no existe, detenemos la ejecución.
+    if (!producto) {
+        return;
+    }
 
-        // Si existe, verificamos que haya stock disponible.
-        if (productoExistente.cantidad < Number(productoExistente.stock)) {
+    // Obtenemos el stock del producto desde MockAPI.
+    const stockDisponible = Number(producto.stock);
 
-            // Aumentamos su cantidad en una unidad.
-            productoExistente.cantidad++;
+    
+    /* ==============================================
+    VALIDAR STOCK AL AUMENTAR LA CANTIDAD
+    ============================================== */
+
+    // Si se presionó el botón +.
+    if (botonCantidad.classList.contains("cantidad-mas")) {
+
+        // Comprobamos si todavía hay unidades disponibles.
+        if (cantidad < stockDisponible) {
+
+            // Aumentamos la cantidad seleccionada.
+            cantidad++;
 
         } else {
 
-            // Avisamos que alcanzamos el stock disponible.
-            mostrarNotificacionCarrito(
-                "💜 Alcanzaste el stock disponible de este producto."
-            );
+            // Buscamos si ya existe un mensaje en esta tarjeta.
+            let avisoStock = tarjeta.querySelector(".aviso-stock");
+
+            // Si todavía no existe, creamos el elemento.
+            if (!avisoStock) {
+
+                // Creamos un párrafo para mostrar el aviso.
+                avisoStock = document.createElement("p");
+
+                // Le asignamos una clase para personalizarlo.
+                avisoStock.className = "aviso-stock";
+
+                // Permitimos anunciar el mensaje de forma accesible.
+                avisoStock.setAttribute("role", "status");
+
+                // Lo insertamos debajo del selector de cantidades.
+                tarjeta.querySelector(".producto-cantidad")
+                    .insertAdjacentElement("afterend", avisoStock);
+
+            }
+
+            // Mostramos la cantidad máxima disponible.
+            avisoStock.textContent =
+                "💜 Por el momento, solo disponemos de " +
+                stockDisponible + " unidades de este producto.";
 
         }
+
+    }
+ 
+    /* ==============================================
+    DISMINUIR CANTIDAD Y OCULTAR AVISO DE STOCK
+    ============================================== */
+
+    // Si se presionó el botón −.
+    if (botonCantidad.classList.contains("cantidad-menos")) {
+
+        // Comprobamos que la cantidad sea mayor que 1.
+        if (cantidad > 1) {
+
+            // Disminuimos una unidad.
+            cantidad--;
+
+            // Buscamos si existe un aviso de stock en esta tarjeta.
+            const avisoStock = tarjeta.querySelector(".aviso-stock");
+
+            // Si encontramos el aviso, lo eliminamos.
+            if (avisoStock) {
+                avisoStock.remove();
+            }
+
+        }
+
+    }
+
+    // Actualizamos la cantidad visible en la tarjeta.
+    cantidadElemento.textContent = cantidad;
+
+});
+ 
+/* ==============================================
+   AGREGAR CANTIDADES SELECCIONADAS AL CARRITO
+============================================== */
+
+// Escuchamos los clics dentro del catálogo.
+catalogo.addEventListener("click", function(evento) {
+
+    // Identificamos el botón Añadir al carrito.
+    const boton = evento.target.closest(".boton-agregar-carrito");
+
+    // Si el clic fue en otro elemento, terminamos.
+    if (!boton) {
+        return;
+    }
+
+    // Obtenemos el ID del producto seleccionado.
+    const idProducto = boton.dataset.id;
+
+    // Buscamos el producto en nuestra lista de MockAPI.
+    const productoSeleccionado = listaProductos.find(function(producto) {
+
+        // Comparamos ambos identificadores como texto.
+        return String(producto.id) === idProducto;
+
+    });
+
+    // Comprobamos que el producto exista.
+    if (!productoSeleccionado) {
+
+        // Informamos el problema en consola.
+        console.log("No se encontró el producto.");
+
+        // Detenemos la operación.
+        return;
+    }
+
+    // Buscamos la tarjeta del producto seleccionado.
+    const tarjeta = boton.closest(".producto-card");
+
+    // Buscamos el número elegido con los botones + y −.
+    const cantidadElemento = tarjeta.querySelector(".cantidad-seleccionada");
+
+    // Convertimos la cantidad seleccionada a número.
+    const cantidadSeleccionada = Number(cantidadElemento.textContent);
+
+    // Convertimos el stock disponible a número.
+    const stockDisponible = Number(productoSeleccionado.stock);
+
+    // Comprobamos que la cantidad sea un entero positivo.
+    if (!Number.isInteger(cantidadSeleccionada) || cantidadSeleccionada < 1) {
+
+        // Informamos que la cantidad no es válida.
+        mostrarNotificacionCarrito("💜 Seleccioná una cantidad válida.");
+
+        // No modificamos el carrito.
+        return;
+    }
+
+    // Buscamos si el producto ya existe en el carrito.
+    const productoExistente = carrito.find(function(producto) {
+
+        // Comparamos los identificadores.
+        return String(producto.id) === idProducto;
+
+    });
+
+    // Obtenemos la cantidad que ya está en el carrito.
+    const cantidadEnCarrito = productoExistente
+        ? Number(productoExistente.cantidad)
+        : 0;
+
+    // Sumamos las unidades existentes y las nuevas.
+    const cantidadTotalSolicitada =
+        cantidadEnCarrito + cantidadSeleccionada;
+   
+    /* ==============================================
+    AVISO CUANDO SE SUPERA EL STOCK DEL CARRITO
+    ============================================== */
+
+    // Comprobamos si la cantidad total supera el stock.
+    if (cantidadTotalSolicitada > stockDisponible) {
+
+        // Calculamos cuántas unidades quedan disponibles.
+        const unidadesRestantes = Math.max(
+            0,
+            stockDisponible - cantidadEnCarrito
+        );
+
+        // Buscamos si ya existe un aviso en esta tarjeta.
+        let avisoStock = tarjeta.querySelector(".aviso-stock");
+
+        // Si no existe, creamos el mensaje.
+        if (!avisoStock) {
+
+            // Creamos un párrafo para mostrar la advertencia.
+            avisoStock = document.createElement("p");
+
+            // Aplicamos el estilo lavanda que ya diseñamos.
+            avisoStock.className = "aviso-stock";
+
+            // Indicamos que es un mensaje informativo.
+            avisoStock.setAttribute("role", "status");
+
+            // Lo colocamos debajo del selector de cantidad.
+            tarjeta.querySelector(".producto-cantidad")
+                .insertAdjacentElement("afterend", avisoStock);
+
+        }
+
+        // Comprobamos si ya están todas las unidades en el carrito.
+        if (unidadesRestantes === 0) {
+
+            // Informamos que no quedan más unidades para agregar.
+            avisoStock.textContent =
+                "💜 Ya tenés las " + stockDisponible +
+                " unidades disponibles de este producto en tu carrito.";
+
+        } else {
+
+            // Informamos cuántas unidades adicionales puede agregar.
+            avisoStock.textContent =
+                "💜 No pudimos agregar esa cantidad. " +
+                "Solo podés agregar " + unidadesRestantes +
+                " unidad(es) más a tu carrito.";
+
+        }
+
+        // Detenemos la operación sin modificar el carrito.
+        return;
+    }
+
+
+    // Si el producto ya existe en el carrito.
+    if (productoExistente) {
+
+        // Actualizamos el stock almacenado.
+        productoExistente.stock = productoSeleccionado.stock;
+
+        // Sumamos las unidades seleccionadas.
+        productoExistente.cantidad =
+            cantidadEnCarrito + cantidadSeleccionada;
 
     } else {
-
-        // Si no existe, comprobamos que haya stock.
-        if (Number(productoSeleccionado.stock) <= 0) {
-
-            // Mostramos un aviso y detenemos la operación.
-            mostrarNotificacionCarrito("💜 Este producto no tiene stock.");
-            return;
-        }
 
         // Creamos una copia del producto original.
         const productoParaCarrito = {
 
-            // Copiamos sus propiedades.
+            // Conservamos sus propiedades.
             ...productoSeleccionado,
 
-            // Establecemos la cantidad inicial.
-            cantidad: 1
+            // Incorporamos la cantidad seleccionada.
+            cantidad: cantidadSeleccionada
 
         };
 
-        // Agregamos el nuevo producto al carrito.
+        // Agregamos el producto al carrito.
         carrito.push(productoParaCarrito);
 
     }
 
-    // Guardamos el carrito actualizado en el navegador.
+    // Guardamos el carrito actualizado en localStorage.
     guardarCarrito();
 
-    // Actualizamos los productos visibles del carrito.
+    // Actualizamos el contenido del carrito lateral.
     mostrarCarrito();
 
-    // Mostramos el carrito actualizado en la consola.
-    console.log("Carrito actualizado:", carrito);
-
-    // ==============================================
-    // ACTUALIZAR EL RESUMEN DEL CARRITO
-    // ==============================================
-
-    // Llamamos a la función que creamos en el paso 64.
-    // Esta suma las unidades y calcula el importe total.
+    // Actualizamos el contador y el total del encabezado.
     actualizarResumenCarrito();
 
- });
+    // Confirmamos visualmente que los productos fueron agregados.
+    mostrarNotificacionProductoAgregado();
+
+    // Restablecemos la cantidad visible a una unidad.
+    cantidadElemento.textContent = 1;
+
+    // Eliminamos cualquier aviso anterior de esta tarjeta.
+    const avisoStock = tarjeta.querySelector(".aviso-stock");
+
+    // Si existe el aviso, lo quitamos.
+    if (avisoStock) {
+        avisoStock.remove();
+    }
+
+    // Mostramos el resultado en consola.
+    console.log("Carrito actualizado:", carrito);
+
+});
 
  
 /* ==========================================
@@ -1035,7 +1255,7 @@ function mostrarNotificacionCarrito(mensaje) {
     // Cancelamos el temporizador anterior, si existe.
     clearTimeout(temporizadorNotificacion);
 
-    // Creamos un temporizador de 7 segundos.
+    // Creamos un temporizador de 6 segundos.
     temporizadorNotificacion = setTimeout(function() {
 
         // Ocultamos la notificación.
@@ -1044,7 +1264,7 @@ function mostrarNotificacionCarrito(mensaje) {
         // Limpiamos el contenido del mensaje.
         notificacion.textContent = "";
 
-    }, 7000);
+    }, 6000);
 
 }
 
@@ -1060,5 +1280,149 @@ actualizarResumenCarrito();
 
 // Verificamos en consola que el carrito se restauró.
 console.log("Carrito restaurado correctamente:", carrito);
+
+
+/* =====================================================
+   FORMULARIO DE CONTACTO: PIXELCHARMS
+   ENVÍO A FORMSPREE Y LIMPIEZA DE CAMPOS
+===================================================== */
+
+// Buscamos el formulario de contacto en nuestro HTML.
+const formularioContacto = document.querySelector(".contacto-formulario");
+
+// Buscamos el elemento donde mostraremos el resultado.
+const mensajeContacto = document.querySelector("#mensaje-contacto");
+
+// Escuchamos cuando el visitante envía el formulario.
+formularioContacto.addEventListener("submit", async function(evento) {
+
+    // Evitamos que el navegador abandone nuestra página.
+    evento.preventDefault();
+
+    // Buscamos el botón de envío dentro del formulario.
+    const botonEnviar = formularioContacto.querySelector('button[type="submit"]');
+
+    // Desactivamos el botón para evitar envíos duplicados.
+    botonEnviar.disabled = true;
+
+    // Cambiamos temporalmente el texto del botón.
+    botonEnviar.textContent = "Enviando mensaje...";
+
+    // Ocultamos cualquier mensaje anterior.
+    mensajeContacto.hidden = true;
+
+    // Creamos un objeto con los datos ingresados.
+    const datosFormulario = new FormData(formularioContacto);
+
+    // Intentamos enviar el formulario a Formspree.
+    try {
+
+        // Enviamos los datos a la dirección configurada en HTML.
+        const respuesta = await fetch(formularioContacto.action, {
+
+            // Utilizamos el método POST para enviar los datos.
+            method: "POST",
+
+            // Incorporamos los datos del formulario.
+            body: datosFormulario,
+
+            // Solicitamos que Formspree responda en formato JSON.
+            headers: {
+                "Accept": "application/json"
+            }
+
+        });
+
+        // Comprobamos si Formspree aceptó el envío.
+        if (respuesta.ok) {
+
+            // Limpiamos nombre, correo electrónico y mensaje.
+            formularioContacto.reset();
+
+            // Mostramos una confirmación personalizada.
+            mensajeContacto.textContent =
+                "💜 ¡Tu mensaje fue enviado correctamente! Pronto nos pondremos en contacto.";
+
+            // Indicamos que el resultado fue exitoso.
+            mensajeContacto.className = "mensaje-contacto-exito";
+
+        } else {
+
+            // Avisamos cuando Formspree no acepta el envío.
+            mensajeContacto.textContent =
+                "No pudimos enviar tu mensaje. Por favor, intentá nuevamente.";
+
+            // Aplicamos la clase correspondiente al error.
+            mensajeContacto.className = "mensaje-contacto-error";
+
+        }
+
+    } catch (error) {
+
+        // Capturamos errores de conexión o de red.
+        console.error("Error al enviar el formulario:", error);
+
+        // Informamos al visitante que hubo un inconveniente.
+        mensajeContacto.textContent =
+            "No pudimos conectar con el servicio. Revisá tu conexión e intentá nuevamente.";
+
+        // Aplicamos la clase correspondiente al error.
+        mensajeContacto.className = "mensaje-contacto-error";
+
+    } finally {
+
+        // Volvemos a activar el botón después del intento.
+        botonEnviar.disabled = false;
+
+        // Recuperamos el texto original del botón.
+        botonEnviar.textContent = "Enviar mensaje";
+
+        // Hacemos visible el resultado del envío.
+        mensajeContacto.hidden = false;
+
+    }
+
+});
+
+
+/* =====================================================
+   NOTIFICACIÓN FLOTANTE DE PRODUCTOS AGREGADOS
+===================================================== */
+
+// Guardamos el temporizador para poder reiniciarlo.
+let temporizadorProductoAgregado;
+
+// Creamos una función para mostrar la notificación.
+function mostrarNotificacionProductoAgregado() {
+
+    // Buscamos la notificación flotante en el HTML.
+    const notificacion = document.querySelector(
+        "#notificacion-producto-agregado"
+    );
+
+    // Si no encontramos el elemento, detenemos la función.
+    if (!notificacion) {
+        return;
+    }
+
+    // Definimos el mensaje que verá el cliente.
+    notificacion.textContent =
+        "💜 ¡Tus charms se agregaron al carrito!";
+
+    // Hacemos visible la notificación.
+    notificacion.hidden = false;
+
+    // Cancelamos el temporizador anterior, si existe.
+    clearTimeout(temporizadorProductoAgregado);
+
+    // Programamos que desaparezca después de 5 segundos.
+    temporizadorProductoAgregado = setTimeout(function() {
+
+        // Ocultamos nuevamente la notificación.
+        notificacion.hidden = true;
+
+    }, 5000);
+
+}
 
 

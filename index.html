@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <!-- Indica al navegador que estamos utilizando HTML5 -->
-
+<!--
+    Este archivo HTML es la estructura principal de nuestra tienda online PixelCharms.
+    Contiene las secciones de inicio, productos, reseñas y contacto.
+    Además, incluye el carrito de compras y el pie de página.
+    Autor: PixelCharms, Laura Virginia Rocha Malaver -->
 
 <html lang="es">
 <!-- Elemento raíz de nuestra página.
@@ -152,15 +156,11 @@
 
     </header>
 
-
-
     <!-- =================================================
          CONTENIDO PRINCIPAL
     ================================================== -->
 
     <main>
-
-
 
         <!-- =============================================
             SECCIÓN INICIO
@@ -496,8 +496,6 @@
 
         <!-- ================= FIN SECCIÓN RESEÑAS ================= -->
 
-
-
         <!-- ========================================= -->
         <!-- SECCIÓN CONTACTO                          -->
         <!-- ========================================= -->
@@ -535,20 +533,38 @@
                         un accesorio que tenga tu estilo.
                     </p>
 
-                    <!-- Redes sociales -->
+
+                    <!-- Redes sociales de PixelCharms -->
                     <div class="contacto-redes">
 
+                        <!-- Enlace directo al Instagram oficial -->
                         <p>
                             <strong>Instagram:</strong>
-                            @pixelcharmsaccesorios
+
+                            <a
+                                href="https://www.instagram.com/pixelcharmsaccesorios/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                @pixelcharmsaccesorios
+                            </a>
                         </p>
 
+                        <!-- Enlace directo al TikTok oficial -->
                         <p>
                             <strong>TikTok:</strong>
-                            PixelCharms Accesorios
+
+                            <a
+                                href="https://www.tiktok.com/@pixelcharmsacceso"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                PixelCharms Accesorios
+                            </a>
                         </p>
 
                     </div>
+
 
                 </div>
 
@@ -603,21 +619,29 @@
 
                     </div>
 
-                    <!-- Botón del formulario -->
+                    <!-- Botón para enviar el formulario a Formspree -->
                     <button type="submit" class="boton-contacto">
                         Enviar mensaje
                     </button>
+
+                    <!-- Aquí mostraremos si el mensaje se envió correctamente -->
+                    <!-- role="status" permite anunciar el resultado a lectores de pantalla -->
+                    <!-- hidden mantiene el mensaje oculto inicialmente -->
+                    <p
+                        id="mensaje-contacto"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></p>
 
                 </form>
 
             </div>
 
+            <!-- ================= FIN SECCIÓN CONTACTO ================= -->
         </section>
 
-
-
     </main>
-
 
 
     <!-- =================================================
@@ -655,7 +679,7 @@
             </div>
 
         </div>
-
+        <!-- ================= FIN SECCIÓN FOOTER ================= -->
     </footer>
     
     <!-- ==========================================
@@ -746,9 +770,7 @@
             </button>
 
         </div>
-        
-        
-
+       
     </aside>
     <!-- ==========================================
         VENTANA DE CONFIRMACIÓN - VACIAR CARRITO
@@ -795,6 +817,21 @@
 
         </div>
 
+    </div>
+
+    <!-- ==========================================
+        NOTIFICACIÓN FLOTANTE DE PIXELCHARMS
+    ========================================== -->
+
+    <!-- Mostrará la confirmación cuando agreguemos productos al carrito -->
+    <div
+        id="notificacion-producto-agregado"
+        class="notificacion-producto-agregado"
+        role="status"
+        aria-live="polite"
+        hidden
+    >
+        <!-- JavaScript colocará aquí el mensaje de confirmación -->
     </div>
 
     <!-- Conexión con el archivo JavaScript externo -->

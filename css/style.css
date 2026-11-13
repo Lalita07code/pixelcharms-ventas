@@ -1,6 +1,12 @@
 /* =========================================================
+    Archivo de estilos CSS para la tienda online PixelCharms.
+    Autor: PixelCharms, Laura Virginia Rocha Malaver
+    Noviembre 2026
+    =========================================================*/
+
+/* ===============================================
    ESTILOS GENERALES
-========================================================= */
+================================================== */
 /* Selector universal: selecciona todos los elementos */
 * {
     margin: 0; /* Elimina los márgenes que agrega el navegador por defecto */
@@ -15,10 +21,10 @@ body {
     background-color: #f5f5f5; /* Gris claro suave para el fondo general */
     color: #0A1B2A; /* Define el color principal de los textos */
 }
-/*=================FIN - ESTILOS GENERALES================*/
-/* =========================================================
+/*===============FIN - ESTILOS GENERALES==========*/
+/* ===============================================
    HEADER - ENCABEZADO
-========================================================= */
+================================================== */
 header {
     display: flex;    /* Activa Flexbox dentro del header */
     justify-content: space-between; /* Coloca la marca a un lado y la navegación al otro */
@@ -53,10 +59,10 @@ header {
     margin-top: 4px; /* Separa el slogan del título */
     text-align: right; /* Alinea el slogan hacia la derecha */
 }
-/*=======================FIN - HEADER=======================*/
-/* =========================================================
+/*=======================FIN - HEADER=============*/
+/* ===============================================
    NAVEGACIÓN PRINCIPAL
-========================================================= */
+================================================== */
 /* Lista que contiene las opciones del menú */
 nav ul {
     display: flex; /* Activa Flexbox. Los elementos <li> dejan de aparecer uno debajo
@@ -78,10 +84,10 @@ nav a {
 nav a:hover {
     color: #1AE89B; /* Cambia el texto a Verde Aurora cuando pasamos el mouse */
 }
-/*====================FIN - NAV PRINCIPAL===================*/
-/* =========================================================
+/*================FIN - NAV PRINCIPAL=============*/
+/* ===============================================
    HERO - SECCIÓN INICIO
-========================================================= */
+================================================== */
 /* Contenedor principal de toda la sección Hero */
 .hero-contenido {
     display: flex; /* Activa Flexbox */
@@ -91,9 +97,9 @@ nav a:hover {
     margin: 0; /* Asegura de que el contenedor tampoco tenga márgenes externos */
 }
 
-/* =========================================================
+/* ===============================================
    CONTENEDOR DE LA IMAGEN
-========================================================= */
+================================================== */
 .hero-imagen {
     position: relative; /* Será la referencia para posicionar el botón sobre la imagen */
     width: 100%; /* Ocupa todo el ancho disponible */
@@ -103,9 +109,9 @@ nav a:hover {
     margin: 0; /* Elimina márgenes externos */
 }
 
-/* =========================================================
+/* ===============================================
    IMAGEN PRINCIPAL DEL HERO
-========================================================= */
+================================================== */
 .hero-imagen img {
     width: 100%; /* Ocupa todo el ancho del contenedor */
     height: 100%; /* Ocupa toda la altura de .hero-imagen */
@@ -116,9 +122,9 @@ nav a:hover {
     border-radius: 0; /* La imagen llega hasta los bordes */
 }
 
-/* =========================================================
+/* ===============================================
    BOTÓN SOBRE LA IMAGEN
-========================================================= */
+================================================== */
 .boton-principal {
     position: absolute; /* Saca el botón de su posición normal y permite colocarlo 
         encima de la imagen */
@@ -136,27 +142,27 @@ nav a:hover {
     transition: background-color 0.3s; /* Suaviza el cambio de color
        cuando se pasa el mouse */
 }
-/* =========================================================
+/* ===============================================
    EFECTO HOVER DEL BOTÓN
-========================================================= */
+================================================== */
 .boton-principal:hover {
     background-color: #009F9A; /* Cambia al turquesa PixelCharms
        cuando se pasa el mouse */
 }
-/*========================FIN - HERO========================*/
-/* =========================================================
+/*========================FIN - HERO==============*/
+/* ===============================================
    PRODUCTOS
-========================================================= */
+================================================== */
 /* Sección principal que contiene nuestros productos */
 .productos {
     padding: 30px 4% 45px;     /* Reduce el espacio arriba y abajo */
     background-color: #f5f5f5;   /* Gris claro del fondo */
     text-align: center;           /* Centra todo el contenido */
 }
-/*========================FIN - PRODUCTOS========================*/
-/* =========================================================
+/*==================FIN - PRODUCTOS===============*/
+/* ===============================================
    ENCABEZADO DE LA SECCIÓN PRODUCTOS
-========================================================= */
+================================================== */
 /* Contenedor del título, línea decorativa y subtítulo */
 .productos-encabezado {
     text-align: center;           /* Centra todos los elementos */
@@ -194,9 +200,9 @@ nav a:hover {
     margin: 0;
 }
 /*========================FIN - PRODUCTOS========================*/
-/* =========================================================
+/* ===============================================
    CONTENEDOR DE LAS TARJETAS
-========================================================= */
+================================================== */
 .productos-contenedor {
     display: flex;              /* Activa Flexbox */
     justify-content: center;    /* Centra las tarjetas horizontalmente */
@@ -208,9 +214,9 @@ nav a:hover {
     box-sizing: border-box;     /* Incluye el padding dentro del ancho */
 }
 /*========================FIN - CONTENEDOR DE LAS TARJETAS========================*/
-/* =========================================================
+/* ===============================================
    TARJETA DE PRODUCTO
-========================================================= */
+================================================== */
 .producto-card {
     width: 280px;               /* Ancho de cada tarjeta */
     background-color: white;    /* Fondo blanco */
@@ -224,9 +230,9 @@ nav a:hover {
     align-items: center; /* Mantiene el contenido centrado horizontalmente */
 }
 /*========================FIN - TARJETA DEL PRODUCTO========================*/
-/* =========================================================
+/* ===============================================
    IMAGEN DE LA TARJETA
-========================================================= */
+================================================== */
 .producto-card img {
     width: 100%; /* La imagen ocupa todo el ancho disponible de la tarjeta */
     height: 280px; /* Todas las imágenes tendrán la misma altura */
@@ -234,18 +240,18 @@ nav a:hover {
     display: block; /* Evita pequeños espacios debajo de la imagen */
 }
 /*========================FIN - IMAGEN DE LA TARJETA========================*/
-/* =========================================================
+/* ===============================================  
    TÍTULO DE LA TARJETA
-========================================================= */
+================================================== */
 .producto-card h3 {
     font-size: 22px; /* Define el tamaño del nombre de la categoría */
     color: #0A1B2A; /* Utiliza el Azul Noche de PixelCharms */
     margin: 18px 15px 8px; /* 18px arriba 15px a los lados 8px abajo */
 }
 /*========================FIN - TÍTULO DE LA TARJETA========================*/
-/* =========================================================
+/* ===============================================  
    DESCRIPCIÓN DE LA TARJETA
-========================================================= */
+================================================== */
 .producto-card p {
     font-size: 0.9rem;       /* Hace la descripción un poco más pequeña */
     font-style: italic;      /* Coloca el texto en cursiva */
@@ -254,9 +260,9 @@ nav a:hover {
     color: #5E3A6D;          /* Violeta oscuro suave */
 }
 /*========================FIN - DESCRIPCIÓN DE LA TARJETA========================*/
-/* =========================================================
+/* ===============================================
    BOTON DE LA TARJETA
-========================================================= */
+================================================== */
 /* Botón "Ver colección" de las tarjetas */
 .producto-card a {
     display: inline-block;          /* Permite darle forma de botón */
@@ -278,9 +284,9 @@ nav a:hover {
     transform: translateY(-2px);     /* Eleva ligeramente el botón */
 }
 /*========================FIN - BOTON DE LA TARJETA========================*/
-/* =========================================================
+/* ===============================================
    BOTÓN DE LA TARJETA
-========================================================= */
+================================================== */
 .boton-producto {
     display: inline-block; /* Permite que el enlace se comporte visualmente como un botón */
     background-color: #7B2CBF;/* Violeta de PixelCharms */
@@ -293,17 +299,17 @@ nav a:hover {
     transition: background-color 0.3s; /* Suaviza el cambio de color del hover */
 }
 /*========================FIN - BOTÓN DE LA TARJETA========================*/
-/* =========================================================
+/* ===============================================
    HOVER DEL BOTÓN DE LA TARJETA
-========================================================= */
+================================================== */
 .boton-producto:hover {
     background-color: #009F9A; /* Cambia al Turquesa PixelCharms
        cuando pasamos el mouse */
 }
 /*========================FIN - HOVER DEL BOTÓN DE LA TARJETA========================*/
-/* =========================================================
+/* ===============================================
    RESEÑAS
-========================================================= */
+================================================== */
 /* Sección principal de reseñas */
 .resenas {
     padding: 35px 5% 25px; /* Reduce el espacio inferior de Reseñas */
@@ -344,9 +350,9 @@ nav a:hover {
     font-size: 1rem; /* Tamaño del texto */
     margin: 0; /* Evita márgenes adicionales del párrafo */
 }
-/* =========================================================
+/* ===============================================
    GRID DE RESEÑAS
-========================================================= */
+================================================== */
 .resenas-contenedor {
     display: grid; /* Activa CSS Grid */
     grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas del mismo tamaño */
@@ -355,9 +361,9 @@ nav a:hover {
     margin: 0 auto; /* Centra todo el Grid dentro de la página */
 }
 /*========================FIN - GRID DE RESEÑAS========================*/
-/* =========================================================
+/* ===============================================
    TARJETAS DE RESEÑAS
-========================================================= */
+================================================== */
 .resena-card {
     background-color: #ffffff; /* Fondo blanco para diferenciar la tarjeta
        del gris claro de la página */
@@ -391,16 +397,16 @@ nav a:hover {
     margin: 0;/* Elimina márgenes automáticos */
 }
 /*========================FIN - TARJETAS DE RESEÑAS========================*/
-/* ========================================= */
+/* =============================================== */
 /* SECCIÓN CONTACTO                          */
-/* ========================================= */
+/* =============================================== */
 .contacto {
     padding: 25px 5% 35px; /* Reduce el espacio superior e inferior de toda la sección */
     background-color: #f4f4f4; /* Mantiene el fondo gris suave de la página */
 }
-/* ========================================= */
+/* =============================================== */
 /* ENCABEZADO DE CONTACTO                    */
-/* ========================================= */
+/* =============================================== */
 .contacto-encabezado {
     text-align: center; /* Centra el título y el subtítulo */
     margin-bottom: 20px; /* Reduce la distancia entre el encabezado y el contenido */
@@ -428,9 +434,9 @@ nav a:hover {
     font-style: italic; /* Coloca el subtítulo en cursiva */
     margin: 10px 0 0; /* Elimina márgenes innecesarios */
 }
-/* ========================================= */
+/* =============================================== */
 /* CONTENEDOR PRINCIPAL DE CONTACTO          */
-/* ========================================= */
+/* =============================================== */
 .contacto-contenedor {
     display: flex; /* Activa Flexbox */
     flex-direction: row; /* Coloca información y formulario uno al lado del otro */
@@ -441,9 +447,9 @@ nav a:hover {
     margin: 0 auto; /* Centra el contenedor */
 }
 /*========================FIN - CONTENEDOR DE CONTACTO========================*/
-/* ========================================= */
+/* =============================================== */
 /* INFORMACIÓN DE CONTACTO                   */
-/* ========================================= */
+/* =============================================== */
 .contacto-info {
     flex: 1; /* Permite que esta columna ocupe el espacio disponible */
     max-width: 450px; /* Evita que la columna se haga demasiado ancha */
@@ -473,9 +479,9 @@ nav a:hover {
     color: #0A1B2A; /* Aplica el azul noche de la marca */
 }
 /*========================FIN - INFORMACIÓN DE CONTACTO========================*/
-/* ========================================= */
+/* =============================================== */
 /* FORMULARIO DE CONTACTO                    */
-/* ========================================= */
+/* =============================================== */
 .contacto-formulario {
     flex: 1; /* Permite que el formulario ocupe el espacio disponible */
     max-width: 450px; /* Limita el ancho del formulario */
@@ -484,9 +490,9 @@ nav a:hover {
     border-radius: 20px; /* Redondea las esquinas */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Agrega una sombra suave */
 }
-/* ========================================= */
+/* =============================================== */
 /* CAMPOS DEL FORMULARIO                     */
-/* ========================================= */
+/* =============================================== */
 .campo-formulario {
     display: flex; /* Activa Flexbox dentro de cada campo */
     flex-direction: column; /* Coloca el label arriba del input */
@@ -514,9 +520,9 @@ nav a:hover {
     resize: vertical; /* Permite cambiar solamente la altura del mensaje */
 }
 /*========================FIN - CAMPOS DEL FORMULARIO========================*/
-/* ========================================= */
+/* =============================================== */
 /* BOTÓN ENVIAR MENSAJE                      */
-/* ========================================= */
+/* =============================================== */
 .boton-contacto {
     padding: 12px 25px; /* Define el espacio interno del botón */
     background-color: #7B2CBF; /* Usa el violeta principal de PixelCharms */
@@ -529,9 +535,9 @@ nav a:hover {
 }
 /*========================FIN - BOTÓN ENVIAR MENSAJE========================*/
 
-/* =========================================================
+/* ===============================================
    PIE DE PÁGINA
-   ========================================================= */
+   =============================================== */
 footer {
     background-color: #0A1B2A; /* Aplica el Azul Noche característico de PixelCharms */
     color: #ffffff; /* Coloca el texto del footer en blanco */
@@ -563,9 +569,9 @@ footer {
     font-size: 14px; /* Define un tamaño más discreto para la información */
 }
 /*========================FIN - PIE DE PÁGINA========================*/
-/* =========================================================
+/* ===============================================
    RESPONSIVE - CELULARES
-   ========================================================= */
+   =============================================== */
 @media (max-width: 601px) { /* Aplica estos estilos cuando la pantalla mide 600px o menos */
 
     body {
@@ -690,9 +696,9 @@ footer {
     }
 }
 /*========================FIN - RESPONSIVE CELULARES========================*/
-/* =========================
+/* ===============================================
    RESPONSIVE - TABLET
-   ========================= */
+   =============================================== */
 @media (min-width: 601px) and (max-width: 900px) {
     .productos-contenedor {
         flex-wrap: wrap; /* Permite que las tarjetas bajen a una nueva fila */
@@ -747,9 +753,9 @@ footer {
         font-size: 18px; /* Reduce el nombre de la marca en tablet */
         line-height: 1.2; /* Mantiene las dos líneas más compactas */
     }
-    /* =========================
+    /* ===============================================
        FOOTER - TABLETS
-    ========================= */
+    =============================================== */
     footer {
         padding: 25px 30px; /* Reduce el espacio interno del footer en tablets */
     }
@@ -768,9 +774,9 @@ footer {
 }
 /*========================FIN - RESPONSIVE TABLET========================*/
 
-/* ==============================================
+/* ===============================================
    SEPARACIÓN ENTRE COLECCIONES Y CATÁLOGO
-============================================== */
+================================================== */
 
 /* Seleccionamos el título del catálogo que aparece
    inmediatamente después de las tarjetas de colección. */
@@ -786,9 +792,9 @@ footer {
 }
 
 
-/* ==============================================
+/* ===============================================
    CATÁLOGO DINÁMICO DE PIXELCHARMS
-============================================== */
+================================================== */
 
 /* Contenedor exclusivo de los productos de MockAPI */
 #catalogo-productos {
@@ -822,9 +828,9 @@ footer {
     max-width: 100%;
 }
 
-/* ==============================================
+/* ===============================================
    ANIMACIÓN FLOTANTE DEL CATÁLOGO
-============================================== */
+================================================== */
 
 /* Definimos cómo aparecerán las tarjetas. */
 @keyframes aparecerFlotando {
@@ -903,9 +909,9 @@ footer {
 }
 
 
-/* ==============================================
+/* ===============================================
    ALINEACIÓN DEL PRECIO Y STOCK DEL CATÁLOGO
-============================================== */
+================================================== */
 
 /* Organizamos verticalmente el contenido de cada tarjeta. */
 #catalogo-productos .producto-card {
@@ -920,22 +926,27 @@ footer {
     padding-bottom: 20px;
 }
 
-/* Agrupamos el precio y el stock en la parte inferior. */
+
+/* ===============================================
+   ALINEACIÓN DEL PRECIO Y STOCK DEL CATÁLOGO
+================================================== */
+
 #catalogo-productos .producto-detalles {
 
-    /* Empuja este bloque hacia el final de la tarjeta. */
+    /* Empuja el precio y el stock hacia la parte inferior. */
     margin-top: auto;
 
-    /* Agregamos separación respecto de la descripción. */
-    padding-top: 20px;
+    /* Reducimos el espacio adicional superior. */
+    padding-top: 5px;
 
-    /* Dejamos un pequeño espacio debajo del stock. */
-    padding-bottom: 15px;
+    /* Reducimos el espacio debajo del stock. */
+    padding-bottom: 8px;
 }
 
-/* ==============================================
+
+/* ===============================================
    DESCRIPCIONES DEL CATÁLOGO
-============================================== */
+================================================== */
 
 /* Modificamos únicamente las descripciones
    de las tarjetas de productos de MockAPI. */
@@ -946,9 +957,9 @@ footer {
 }
 
 
-/* ==============================================
+/* ===============================================
    BOTÓN AÑADIR AL CARRITO - PIXELCHARMS
-============================================== */
+================================================== */
 
 /* Aplicamos estilos únicamente a los botones
    del carrito dentro del catálogo de productos. */
@@ -997,9 +1008,9 @@ footer {
 }
 
 
-/* ==============================================
+/* ===============================================
    CONTADOR DEL CARRITO - PIXELCHARMS
-============================================== */
+================================================== */
 
 /* Diseñamos el contenedor del carrito. */
 .carrito-resumen {
@@ -1056,9 +1067,9 @@ footer {
     border-radius: 50%;
 }
 
-/* ==============================================
+/* ===============================================
    TAMAÑO DEL ÍCONO DEL CARRITO
-============================================== */
+================================================== */
 
 /* Modificamos únicamente el ícono del carrito. */
 .carrito-resumen span[aria-hidden="true"] {
@@ -1154,9 +1165,9 @@ footer {
     pointer-events: auto;
 }
 
-/* ==========================================
+/* ===============================================
      ENCABEZADO DEL CARRITO LATERAL
-========================================== */
+================================================== */
 
 /* Organizamos el título y el botón de cerrar. */
 .carrito-cabecera {
@@ -1227,9 +1238,9 @@ footer {
 }
 
 
-/* ==========================================
-      INTERIOR DEL CARRITO LATERAL
-========================================== */
+/* ===============================================
+     INTERIOR DEL CARRITO LATERAL
+================================================== */
 
 /* Contenedor donde aparecerán los productos. */
 .carrito-productos {
@@ -1267,9 +1278,9 @@ footer {
 }
 
 
-/* ==========================================
-   PASO 41: PIE DEL CARRITO LATERAL
-========================================== */
+/* ===============================================
+        PIE DEL CARRITO LATERAL
+================================================== */
 
 /* Contenedor inferior del carrito. */
 .carrito-pie {
@@ -1340,9 +1351,9 @@ footer {
     transition: background-color 0.2s ease;
 }
 
-/* ==========================================
-   PASO 42: BOTONES DEL CARRITO
-========================================== */
+/* ===============================================
+          BOTONES DEL CARRITO
+================================================== */
 
 /* Botón para finalizar el pedido por WhatsApp. */
 #finalizar-whatsapp {
@@ -1405,9 +1416,9 @@ footer {
 }
 
 
-/* ==========================================
-   PASO 44: PRODUCTOS DEL CARRITO
-========================================== */
+/* ===============================================
+         PRODUCTOS DEL CARRITO
+================================================== */
 
 /* Tarjeta individual de cada producto. */
 .carrito-item {
@@ -1463,9 +1474,9 @@ footer {
     margin: 0;
 }
 
-/* ==========================================
+/* ===============================================
    ALINEACIÓN DEL NOMBRE Y PRECIO DEL CARRITO
-========================================== */
+================================================== */
 
 /* Contenedor del nombre y precio. */
 .carrito-item-detalles {
@@ -1510,9 +1521,9 @@ footer {
 }
 
 
-/* ==========================================
+/* ===============================================
    CONTROLES DE CANTIDAD DEL CARRITO
-========================================== */
+================================================== */
 
 /* Organizamos los detalles del producto. */
 .carrito-item-detalles {
@@ -1582,9 +1593,9 @@ footer {
     color: #254A65;
 }
 
-/* ==========================================
+/* ===============================================
    NOTIFICACIONES DE PIXELCHARMS
-========================================== */
+================================================== */
 
 /* Diseñamos el mensaje personalizado. */
 .notificacion-carrito {
@@ -1621,9 +1632,9 @@ footer {
 }
 
 
-/* ==========================================
-   PASO 61: PAPELERA DEL CARRITO
-========================================== */
+/* ===============================================
+            PAPELERA DEL CARRITO
+================================================== */
 
 /* Diseñamos el botón para eliminar productos. */
 .carrito-eliminar {
@@ -1665,9 +1676,9 @@ footer {
     background-color: #e8d5f3;
 }
 
-/* ==============================================
+/* ===============================================
    MODAL DE CONFIRMACIÓN - PIXELCHARMS
-============================================== */
+================================================== */
 
 /* Fondo oscuro detrás de la ventana. */
 .fondo-confirmacion {
@@ -1849,3 +1860,224 @@ footer {
     }
 }
 
+/* ===============================================
+   MENSAJES DEL FORMULARIO DE CONTACTO
+================================================== */
+
+/* Estilo cuando Formspree confirma el envío */
+.mensaje-contacto-exito {
+    /* Espacio respecto al botón */
+    margin-top: 15px;
+
+    /* Espacio interior */
+    padding: 12px 15px;
+
+    /* Fondo violeta muy suave */
+    background-color: #f3e8ff;
+
+    /* Texto violeta de PixelCharms */
+    color: #6b21a8;
+
+    /* Bordes redondeados */
+    border-radius: 10px;
+
+    /* Tamaño del texto */
+    font-size: 13px;
+
+    /* Alineación del mensaje */
+    text-align: center;
+}
+
+/* Estilo cuando ocurre un error */
+.mensaje-contacto-error {
+    /* Espacio respecto al botón */
+    margin-top: 15px;
+
+    /* Espacio interior */
+    padding: 12px 15px;
+
+    /* Fondo rojo suave */
+    background-color: #fff1f2;
+
+    /* Texto rojo oscuro */
+    color: #9f1239;
+
+    /* Bordes redondeados */
+    border-radius: 10px;
+
+    /* Tamaño del texto */
+    font-size: 13px;
+
+    /* Alineación del mensaje */
+    text-align: center;
+}
+
+/* Garantizamos que los mensajes ocultos no ocupen espacio */
+#mensaje-contacto[hidden] {
+    display: none;
+}
+
+
+/* ===============================================
+   SELECTOR DE CANTIDAD: CATÁLOGO PIXELCHARMS
+================================================== */
+
+/* Contenedor de los botones y la cantidad */
+#catalogo-productos .producto-cantidad {
+    display: flex; /* Organiza los elementos horizontalmente */
+    align-items: center; /* Centra verticalmente los controles */
+    justify-content: center; /* Centra el selector en la tarjeta */
+    gap: 12px; /* Separa los botones del número */
+    margin: 8px 0; /* Agrega espacio arriba y abajo */
+}
+
+/* Botones para aumentar y disminuir */
+#catalogo-productos .producto-cantidad button {
+    width: 34px; /* Define el ancho */
+    height: 34px; /* Define la altura */
+    border: 1px solid #d9c6e8; /* Borde violeta suave */
+    border-radius: 9px; /* Redondea las esquinas */
+    background-color: #f4ecf8; /* Fondo lavanda */
+    color: #704293; /* Símbolos violetas */
+    font-size: 20px; /* Tamaño de los símbolos */
+    font-weight: bold; /* Destaca los símbolos */
+    cursor: pointer; /* Muestra la manito */
+    transition: background-color 0.2s ease; /* Suaviza el cambio */
+}
+
+/* Efecto al pasar el mouse */
+#catalogo-productos .producto-cantidad button:hover {
+    background-color: #e8d5f3; /* Lavanda más intenso */
+}
+
+/* Número de unidades seleccionadas */
+#catalogo-productos .cantidad-seleccionada {
+    min-width: 20px; /* Reserva espacio para el número */
+    text-align: center; /* Centra la cantidad */
+    font-size: 17px; /* Tamaño legible */
+    font-weight: 700; /* Destaca el número */
+    color: #254A65; /* Azul de PixelCharms */
+}
+
+
+/* ===============================================
+   AVISO DE STOCK - PIXELCHARMS
+================================================== */
+
+/* Mensaje cuando se alcanza el stock máximo */
+#catalogo-productos .aviso-stock {
+
+    /* Fondo lavanda muy suave */
+    background-color: #f4ecf8;
+
+    /* Color violeta del mensaje */
+    color: #704293;
+
+    /* Espacio interior del aviso */
+    padding: 10px 12px;
+
+    /* Esquinas redondeadas */
+    border-radius: 10px;
+
+    /* Tamaño de letra */
+    font-size: 12px;
+
+    /* Altura de línea para facilitar la lectura */
+    line-height: 1.5;
+
+    /* Centramos el texto */
+    text-align: center;
+
+    /* Espacio respecto al selector */
+    margin: 8px 15px;
+
+    /* Borde violeta suave */
+    border: 1px solid #e5d4f0;
+}
+
+
+/* ===============================================
+   NOTIFICACIÓN FLOTANTE - PIXELCHARMS
+================================================== */
+
+/* Contenedor de la notificación de producto agregado */
+.notificacion-producto-agregado {
+
+    /* Fijamos el mensaje respecto a la pantalla */
+    position: fixed;
+
+    /* Separación desde la parte superior */
+    top: 25px;
+
+    /* Separación desde el borde derecho */
+    right: 25px;
+
+    /* Evitamos que ocupe demasiado espacio */
+    max-width: 340px;
+
+    /* Adaptamos el ancho a pantallas pequeñas */
+    width: calc(100% - 40px);
+
+    /* Espacio interior */
+    padding: 16px 20px;
+
+    /* Fondo lavanda suave */
+    background-color: #f4ecf8;
+
+    /* Texto violeta */
+    color: #704293;
+
+    /* Borde violeta delicado */
+    border: 1px solid #d9c6e8;
+
+    /* Esquinas redondeadas */
+    border-radius: 12px;
+
+    /* Sombra suave */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+    /* Tamaño de letra */
+    font-size: 14px;
+
+    /* Destacamos el mensaje */
+    font-weight: 600;
+
+    /* Mejoramos la lectura */
+    line-height: 1.5;
+
+    /* Centramos el contenido */
+    text-align: center;
+
+    /* Mostramos el aviso por encima de las tarjetas */
+    z-index: 9999;
+}
+
+/* Respetamos el atributo hidden del HTML */
+.notificacion-producto-agregado[hidden] {
+
+    /* Ocultamos completamente la notificación */
+    display: none;
+}
+
+/* Adaptamos la posición para dispositivos móviles */
+@media (max-width: 600px) {
+
+    /* Notificación en pantallas pequeñas */
+    .notificacion-producto-agregado {
+
+        /* Reducimos la separación superior */
+        top: 15px;
+
+        /* Centramos el aviso horizontalmente */
+        left: 50%;
+
+        /* Compensamos el desplazamiento horizontal */
+        transform: translateX(-50%);
+
+        /* Evitamos heredar la posición derecha */
+        right: auto;
+
+        /* Limitamos su ancho */
+        max-width: 340px;
+    }
+}
