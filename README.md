@@ -1,4 +1,3 @@
-
 # 💜 PixelCharms Accesorios
 
 Sitio web desarrollado para **PixelCharms Accesorios**, una marca de accesorios artesanales y personalizados.
@@ -73,6 +72,17 @@ Cada tarjeta presenta:
 - Botón **Añadir al carrito**.
 
 Los productos pueden visualizarse según la colección seleccionada.
+
+### Carga asincrónica y manejo de errores
+
+La consulta de productos a MockAPI se realiza con `fetch` y `async/await`. Se utiliza `try...catch...finally` para controlar el resultado de la solicitud y finalizar el estado de carga tanto si la respuesta es exitosa como si ocurre un error.
+
+- Mientras se esperan los productos, el catálogo puede mostrar un mensaje de carga.
+- Si la consulta falla, se muestra un aviso diferente al de una colección sin productos.
+- La aplicación recuerda la última colección seleccionada para volver a filtrarla cuando termina la carga correctamente.
+- Se comprueba el resultado de la solicitud para gestionar respuestas fallidas de la API.
+
+La selección de colecciones y la carga normal de productos se verificaron en el navegador. La simulación de una conexión lenta quedó pendiente de prueba.
 
 ### 2. Selector de cantidad
 
@@ -180,6 +190,20 @@ Se trabajó especialmente en la distribución de las tarjetas, la navegación, e
 
 ---
 
+## ♿ Accesibilidad y SEO
+
+Para facilitar la navegación y mejorar la comprensión del sitio por parte de usuarios y buscadores, se incorporaron las siguientes prácticas:
+
+- **HTML semántico:** organización del contenido con elementos como `header`, `nav`, `main`, `section` y `footer`.
+- **Textos alternativos (`alt`):** descripción de imágenes para mejorar su accesibilidad.
+- **Navegación por teclado:** uso de controles interactivos accesibles, incluido el botón de apertura del carrito.
+- **Metaetiquetas:** descripción del sitio y configuración de visualización adaptable en el `head`.
+- **Encabezados y contenido:** títulos organizados y descripciones de productos claras.
+
+Estas medidas forman parte de las mejoras de accesibilidad y SEO trabajadas durante la auditoría del proyecto.
+
+---
+
 ## 📂 Estructura del proyecto
 
 ```text
@@ -275,11 +299,11 @@ El desarrollo se realiza de manera incremental, incorporando y probando cada fun
 
 ## 🔧 Estado del proyecto
 
-**En desarrollo — versión académica funcional.**
+**Versión académica funcional — en preparación para la entrega final.**
 
 Se encuentran implementados el catálogo dinámico, el carrito de compras, las validaciones de stock, las notificaciones y el formulario de contacto.
 
-El proyecto continuará evolucionando mediante nuevas mejoras y pruebas.
+Se realizaron revisiones del diseño responsive, el catálogo, el carrito y el manejo de errores de la API. La versión final se publicará en GitHub Pages tras confirmar los cambios en Git.
 
 ---
 

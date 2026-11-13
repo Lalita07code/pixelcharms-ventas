@@ -32,6 +32,12 @@
     <title>PixelCharms Accesorios</title>
     <!-- Texto que aparecerá en la pestaña del navegador -->
 
+    <!-- Descripción de PixelCharms para los motores de búsqueda -->
+    <meta
+        name="description"
+        content="Descubrí PixelCharms Accesorios: pulseras, charms y accesorios personalizados de las colecciones Kids, Cute, Gamer, Piedras y Elegancy. Charms que suben tu nivel."
+    >
+
     <!-- Conexión previa con Google Fonts para mejorar la velocidad de carga -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -139,10 +145,13 @@
     <!-- Contenedor que mostrará la cantidad
         de productos agregados al carrito. -->
     
-    <!-- Contenedor del carrito de compras -->
-    <div class="carrito-resumen">
-
-        <!-- Ícono del carrito -->
+    <!-- Botón accesible para abrir el carrito de compras -->
+    <button
+        type="button"
+        class="carrito-resumen"
+        aria-label="Abrir carrito de compras"
+    >
+        <!-- Ícono decorativo del carrito -->
         <span aria-hidden="true">🛒</span>
 
         <!-- Cantidad de productos seleccionados -->
@@ -151,8 +160,7 @@
         <!-- Total acumulado de la compra -->
         <span id="total-carrito">$0</span>
 
-    </div>
-
+    </button>
 
     </header>
 

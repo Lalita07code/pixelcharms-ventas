@@ -16,7 +16,6 @@
 // Esta dirección contiene los productos de PixelCharms:
 const API_URL = "https://6aeb6319ee39618d7bf8455d.mockapi.io/api/v1/productos";
 
-
  // ==============================================
  // ALMACENAMIENTO TEMPORAL DE PRODUCTOS
  // ==============================================
@@ -24,6 +23,27 @@ const API_URL = "https://6aeb6319ee39618d7bf8455d.mockapi.io/api/v1/productos";
  // Creamos un array vacío para guardar los productos
  // que recibiremos desde nuestra API.
  let listaProductos = [];
+
+
+/* ==============================================
+   ESTADO DE CARGA DE LOS PRODUCTOS
+============================================== */
+
+// Indica si todavía estamos esperando los datos de MockAPI.
+// Comienza en true porque la consulta se realizará al abrir la página.
+let cargandoProductos = true;
+
+// Guarda si ocurrió un error al consultar MockAPI.
+// Comienza en false porque todavía no hubo ningún error.
+let errorCargaProductos = false;
+
+/* ==============================================
+   RECORDAR LA COLECCIÓN SELECCIONADA
+============================================== */
+
+// Guardamos la última categoría elegida por el visitante.
+// Comienza en null porque todavía no seleccionó ninguna.
+let categoriaSeleccionada = null;
 
  
  // ==============================================
@@ -212,51 +232,141 @@ let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
 
  }
 
+/* ==============================================
+   OBTENER PRODUCTOS DESDE MOCKAPI
+   CON MANEJO DE ERRORES
+============================================== */
+
 // Función asíncrona para consultar nuestra API.
- async function obtenerProductos() {
+async function obtenerProductos() {
 
-     // Solicitamos los productos al servidor.
-     const respuesta = await fetch(API_URL);
+    // Intentamos obtener los productos desde MockAPI.
+    try {
+        // Indicamos que comenzó la consulta a MockAPI.
+        cargandoProductos = true;
 
-     // Convertimos la respuesta JSON en un array de JavaScript.
-     const productos = await respuesta.json();
-     
-    // Guardamos los productos recibidos en nuestro array general.
-    listaProductos = productos;
+        // Reiniciamos el indicador de errores.
+        errorCargaProductos = false;
+        // Realizamos la solicitud al servidor.
+        const respuesta = await fetch(API_URL);
 
-    // Comprobamos cuántos productos almacenamos.
-    console.log("Productos guardados:", listaProductos.length);
+        // Comprobamos si el servidor respondió correctamente.
+        if (!respuesta.ok) {
+            // Generamos un error si la respuesta no fue exitosa.
+            throw new Error(
+                "Error HTTP: " + respuesta.status
+            );
 
-    // Mostramos los productos en consola para verificar.
-     console.log("Productos recibidos desde MockAPI:", productos);
-     
-    // ==============================================
-    // MOSTRAR LOS PRODUCTOS RECIBIDOS
-    // ==============================================
+        }
 
-    // Llamamos a nuestra función reutilizable.
-    // Le enviamos los productos obtenidos desde MockAPI.
-    
-    // ==============================================
-    // CATÁLOGO INICIAL SIN PRODUCTOS VISIBLES
-    // ==============================================
+        // Convertimos la respuesta JSON en datos de JavaScript.
+        const productos = await respuesta.json();
+        // Verificamos que la API haya devuelto un array.
+        if (!Array.isArray(productos)) {
+            // Generamos un error si el formato no es el esperado.
+            throw new Error("Formato de productos no válido.");
 
-    // Al cargar la página, no mostramos todas las tarjetas.
-    // Esperamos a que el visitante seleccione una colección.
-    // mostrarProductos(productos);
+        }
 
- }
+        // Guardamos los productos en nuestro array general.
+        listaProductos = productos;
+
+        // Mostramos la cantidad recibida en la consola.
+        console.log("Productos guardados:", listaProductos.length);
+
+        // Mostramos los productos para verificar la respuesta.
+        console.log("Productos recibidos desde MockAPI:", productos);
+
+        // No mostramos las tarjetas automáticamente.
+        // Esperamos a que el visitante seleccione una colección.
+
+    } catch (error) {
+        // Registramos que la consulta a MockAPI falló.
+        errorCargaProductos = true;
+        // Registramos el error para facilitar su diagnóstico.
+        console.error("Error al obtener productos:", error);
+
+        // Buscamos el contenedor del catálogo.
+        const contenedor = document.querySelector("#catalogo-productos");
+
+        // Mostramos un mensaje claro al visitante.
+        contenedor.innerHTML = `
+            <p class="mensaje-sin-productos" role="alert">
+                💜 No pudimos cargar nuestros productos
+                en este momento. Por favor, intentá
+                nuevamente más tarde.
+            </p>
+        `;
+   
+   
+    } finally {
+
+        // Indicamos que MockAPI terminó de responder,
+        // independientemente de si hubo éxito o error.
+        cargandoProductos = false;
+
+        // Verificamos que la carga haya sido exitosa
+        // y que exista una colección seleccionada.
+        if (!errorCargaProductos && categoriaSeleccionada !== null) {
+
+            // Volvemos a filtrar la colección elegida.
+            filtrarProductos(categoriaSeleccionada);
+
+        }
+
+        // Comprobamos los estados en la consola.
+        console.log("Carga finalizada:", !cargandoProductos);
+        console.log("Error de carga:", errorCargaProductos);
+
+    }
+
+}
 
  // Ejecutamos la función al cargar nuestra página.
  obtenerProductos();
 
- 
  // ==============================================
  // FILTRAR PRODUCTOS POR CATEGORÍA
  // ==============================================
 
  // Esta función recibe el nombre de una categoría.
  function filtrarProductos(categoria) {
+    
+    // Guardamos la última colección elegida por el visitante.
+    // Por ejemplo: "Piedras", "Cute" o "Kids".
+    categoriaSeleccionada = categoria;
+
+    // Buscamos el contenedor donde aparecen las tarjetas.
+    const contenedor = document.querySelector("#catalogo-productos");
+    // Verificamos si todavía esperamos los datos de MockAPI.
+    if (cargandoProductos) {
+
+        // Mostramos un mensaje mientras llegan los productos.
+        contenedor.innerHTML = `
+            <p class="mensaje-sin-productos" role="status">
+                💜 Estamos preparando tus charms...
+                ¡Un momentito!
+            </p>
+        `;
+
+        // Detenemos temporalmente el filtrado.
+        return;
+    }
+
+    // Comprobamos si la consulta a MockAPI produjo un error.
+    if (errorCargaProductos) {
+        // Informamos que no fue posible cargar los productos.
+        contenedor.innerHTML = `
+            <p class="mensaje-sin-productos" role="alert">
+                💜 No pudimos cargar los productos.
+                Por favor, intentá nuevamente más tarde.
+            </p>
+        `;
+
+        // Evitamos mostrar incorrectamente una colección vacía.
+        return;
+    }
+    
      // Recorremos el array general y seleccionamos
      // solamente los productos de la categoría indicada.
      const productosFiltrados = listaProductos.filter(function(producto) {
@@ -1104,9 +1214,13 @@ function mostrarCarrito() {
                 console.log("Cantidad actualizada:", producto.cantidad);
 
             } else {
-
-                // Avisamos cuando se alcanza el stock disponible.
-                alert("No hay más unidades disponibles de este producto.");
+            
+                // Mostramos una notificación personalizada de PixelCharms.
+                // Incluimos el nombre del producto que alcanzó su stock máximo.
+                mostrarNotificacionCarrito(
+                    "💜 Alcanzaste el máximo de " + producto.stock +
+                    " unidades disponibles de " + producto.nombre + "."
+                );
 
             }
 

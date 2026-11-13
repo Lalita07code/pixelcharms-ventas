@@ -23,7 +23,7 @@ body {
 }
 /*===============FIN - ESTILOS GENERALES==========*/
 /* ===============================================
-   HEADER - ENCABEZADO
+   HEADER: ENCABEZADO
 ================================================== */
 header {
     display: flex;    /* Activa Flexbox dentro del header */
@@ -86,7 +86,7 @@ nav a:hover {
 }
 /*================FIN - NAV PRINCIPAL=============*/
 /* ===============================================
-   HERO - SECCIÓN INICIO
+   HERO: SECCIÓN INICIO
 ================================================== */
 /* Contenedor principal de toda la sección Hero */
 .hero-contenido {
@@ -98,28 +98,25 @@ nav a:hover {
 }
 
 /* ===============================================
-   CONTENEDOR DE LA IMAGEN
+   CONTENEDOR DEL HERO: PC
 ================================================== */
 .hero-imagen {
-    position: relative; /* Será la referencia para posicionar el botón sobre la imagen */
-    width: 100%; /* Ocupa todo el ancho disponible */
-    height: 550px; /* Limitamos la altura del Hero.Ya no crecerá según la altura original 
-        de la imagen */
-    overflow: hidden; /* Oculta las partes de la imagen que sobresalgan del contenedor */
-    margin: 0; /* Elimina márgenes externos */
+    position: relative; /* Permite ubicar el botón sobre la imagen */
+    width: 100%;         /* Ocupa todo el ancho disponible */
+    height: auto;        /* Adapta la altura a la fotografía */
+    overflow: hidden;    /* Evita que sobresalga contenido */
+    margin: 0;           /* Elimina márgenes externos */
 }
 
 /* ===============================================
-   IMAGEN PRINCIPAL DEL HERO
+   IMAGEN DEL HERO: PC
 ================================================== */
 .hero-imagen img {
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    height: 100%; /* Ocupa toda la altura de .hero-imagen */
-    object-fit: cover; /* Hace que la imagen cubra completamente
-       el espacio sin deformarse */
-    object-position: center; /* Mantiene centrada la parte visible de la imagen */
-    display: block; /* Evita espacios adicionales debajo de la imagen */
-    border-radius: 0; /* La imagen llega hasta los bordes */
+    width: 100%;         /* Ocupa todo el ancho del banner */
+    height: auto;        /* Conserva la proporción original */
+    display: block;      /* Elimina espacios inferiores */
+    object-fit: contain; /* Evita recortar la fotografía */
+    border-radius: 0;    /* Mantiene los bordes rectos */
 }
 
 /* ===============================================
@@ -129,7 +126,7 @@ nav a:hover {
     position: absolute; /* Saca el botón de su posición normal y permite colocarlo 
         encima de la imagen */
     left: 55px; /* Separa el botón 55px del borde izquierdo de la imagen */
-    bottom: 35px; /* Separa el botón 35px del borde inferior de la imagen */
+    bottom: 10px; /* Separa el botón 10px del borde inferior de la imagen */
     display: inline-block; /* Permite aplicar correctamente padding al enlace */
     background-color: #7B2CBF; /* Violeta de PixelCharms */
     color: #ffffff; /* Texto blanco */
@@ -572,7 +569,7 @@ footer {
 /* ===============================================
    RESPONSIVE - CELULARES
    =============================================== */
-@media (max-width: 601px) { /* Aplica estos estilos cuando la pantalla mide 600px o menos */
+@media (max-width: 600px) { /* Aplica estos estilos cuando la pantalla mide 600px o menos */
 
     body {
         width: 100%; /* Hace que el body ocupe todo el ancho disponible de la pantalla */
@@ -587,11 +584,14 @@ footer {
         padding: 0; /* Elimina espacio lateral */
         width: 100%; /* Usa todo el ancho disponible */
     }
+    
+    /* Tarjetas de colecciones en dispositivos móviles. */
     .producto-card {
-        width: 280px; /* Mantiene un ancho cómodo para cada tarjeta en celular */
-        max-width: 90%; /* Evita que la tarjeta se salga de la pantalla */
-        flex-shrink: 0; /* Evita que Flexbox aplaste la tarjeta */
+        width: 100%; /* Aprovecha el ancho disponible. */
+        max-width: 340px; /* Limita el tamaño máximo de la tarjeta. */
+        flex-shrink: 0; /* Evita que Flexbox comprima la tarjeta. */
     }
+
     /* =========================
        HEADER
     ========================= */
@@ -670,13 +670,17 @@ footer {
         object-position: center; /* Centra la imagen */
         display: block; /* Evita espacios adicionales debajo de la imagen */
     }
-    /* =========================
-       BOTÓN DEL HERO
+   /* =========================
+       BOTÓN DEL HERO - CELULARES
     ========================= */
     .boton-principal {
-        bottom: 35px; /* Sube el botón para que no tape la franja inferior del Hero */
-        left: 3%; /* Ubica el botón hacia el lado izquierdo del Hero en versión mobile */
+        left: 3%; /* Mantiene el botón alineado a la izquierda. */
+        bottom: 21px; /* Lo acerca al borde inferior del banner. */
+        padding: 8px 16px; /* Reduce el tamaño del botón. */
+        font-size: 13px; /* Adapta el texto a pantallas pequeñas. */
+        border-radius: 20px; /* Conserva su forma redondeada. */
     }
+
     /* =========================
     FOOTER RESPONSIVE
     ========================= */
@@ -774,6 +778,104 @@ footer {
 }
 /*========================FIN - RESPONSIVE TABLET========================*/
 
+
+/* ===============================================
+   RESPONSIVE - TABLETS GRANDES
+   iPad Pro y pantallas intermedias
+================================================== */
+
+/* Aplicamos estos estilos en pantallas de 901px a 1199px. */
+@media (min-width: 901px) and (max-width: 1199px) {
+
+    /* ===============================================
+       CONTENEDOR DE LAS CINCO CATEGORÍAS
+    ================================================== */
+    .productos-contenedor {
+        display: flex; /* Organiza las tarjetas horizontalmente. */
+        flex-wrap: nowrap; /* Mantiene las cinco tarjetas en una sola fila. */
+        justify-content: center; /* Centra las tarjetas horizontalmente. */
+        align-items: stretch; /* Mantiene una altura uniforme entre tarjetas. */
+        gap: 12px; /* Reduce el espacio entre las cinco tarjetas. */
+        padding: 0 10px; /* Reduce los márgenes interiores laterales. */
+        width: 100%; /* Aprovecha todo el ancho del contenedor. */
+    }
+
+    /* ===============================================
+       TARJETAS KIDS, CUTE, GAMER, PIEDRAS Y ELEGANCY
+    ================================================== */
+    .productos-contenedor .producto-card {
+        width: calc((100% - 48px) / 5); /* Reparte el ancho entre cinco tarjetas, descontando los cuatro espacios de 12px. */
+        min-width: 0; /* Evita que el contenido obligue a ensanchar las tarjetas. */
+        flex-shrink: 1; /* Permite adaptar el ancho si es necesario. */
+    }
+
+    /* ===============================================
+       IMAGEN PRINCIPAL DEL HERO
+    ================================================== */
+    .hero-imagen {
+        height: auto; /* Adapta la altura del Hero a la imagen. */
+        overflow: visible; /* Evita recortes innecesarios. */
+    }
+
+    /* ===============================================
+       FOTOGRAFÍA DEL HERO
+    ================================================== */
+    .hero-imagen img {
+        width: 100%; /* Ocupa todo el ancho disponible. */
+        height: auto; /* Mantiene la proporción original de la imagen. */
+        object-fit: contain; /* Evita deformaciones y recortes. */
+        display: block; /* Elimina pequeños espacios debajo de la imagen. */
+    }
+
+    /* ===============================================
+       BOTÓN VER PRODUCTOS DEL HERO
+    ================================================== */
+    .boton-principal {
+        left: 3%; /* Mantiene el botón cerca del borde izquierdo. */
+        bottom: 65px; /* Lo separa del borde inferior de la imagen. */
+    }
+
+    /* ===============================================
+    HEADER - TABLETS GRANDES
+    ================================================== */
+
+    /* Permitimos que los elementos del encabezado
+    se distribuyan en más de una fila. */
+    header {
+        flex-wrap: wrap; /* Evita que menú y carrito se amontonen. */
+        justify-content: center; /* Centra los elementos. */
+        gap: 12px 20px; /* Separa filas y columnas. */
+        padding: 15px 20px; /* Ajusta el espacio interior. */
+    }
+
+    /* Mantenemos la identidad de PixelCharms compacta. */
+    .marca {
+        flex-shrink: 0; /* Evita comprimir el logo y el nombre. */
+    }
+
+    /* Permitimos que el menú aproveche su espacio. */
+    nav {
+        flex: 1; /* Ocupa el espacio disponible. */
+        min-width: 0; /* Permite adaptarse al contenedor. */
+    }
+
+    /* Centramos los enlaces y evitamos que se peguen. */
+    nav ul {
+        justify-content: center; /* Centra las opciones del menú. */
+        gap: 15px; /* Separa Inicio, Productos, Reseñas y Contacto. */
+        flex-wrap: wrap; /* Permite reorganizar enlaces si hace falta. */
+    }
+
+    /* Evitamos que el carrito reduzca su contenido. */
+    .carrito-resumen {
+        flex-shrink: 0; /* Conserva espacio para cantidad e importe. */
+    }
+
+}
+
+/*========== FIN - RESPONSIVE TABLETS GRANDES ========== */
+
+
 /* ===============================================
    SEPARACIÓN ENTRE COLECCIONES Y CATÁLOGO
 ================================================== */
@@ -854,52 +956,47 @@ footer {
     }
 }
 
-/* Aplicamos la animación solo a las tarjetas del catálogo. */
+/* Aplicamos la animación a las tarjetas del catálogo. */
 #catalogo-productos .producto-card {
-
-    /* Ejecutamos la animación durante 0,6 segundos. */
+    /* Cada tarjeta aparece flotando durante 0,6 segundos. */
     animation: aparecerFlotando 0.6s ease-out both;
-    
-    /* ==============================================
-    EFECTO CASCADA EN LAS TARJETAS
-    ============================================== */
-
-    /* Primera tarjeta: aparece inmediatamente. */
-    #catalogo-productos .producto-card:nth-child(1) {
-        animation-delay: 0s;
-    }
-
-    /* Segunda tarjeta: espera 0,1 segundos. */
-    #catalogo-productos .producto-card:nth-child(2) {
-        animation-delay: 0.1s;
-    }
-
-    /* Tercera tarjeta: espera 0,2 segundos. */
-    #catalogo-productos .producto-card:nth-child(3) {
-        animation-delay: 0.2s;
-    }
-
-    /* Cuarta tarjeta: espera 0,3 segundos. */
-    #catalogo-productos .producto-card:nth-child(4) {
-        animation-delay: 0.3s;
-    }
-
-    /* Quinta tarjeta: espera 0,4 segundos. */
-    #catalogo-productos .producto-card:nth-child(5) {
-        animation-delay: 0.4s;
-    }
-
-    /* Sexta tarjeta: espera 0,5 segundos. */
-    #catalogo-productos .producto-card:nth-child(6) {
-        animation-delay: 0.5s;
-    }
-
-    /* Séptima tarjeta: espera 0,6 segundos. */
-    #catalogo-productos .producto-card:nth-child(7) {
-        animation-delay: 0.6s;
-    }
-
 }
+
+/* Primera tarjeta: aparece inmediatamente. */
+#catalogo-productos .producto-card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+/* Segunda tarjeta: espera 0,1 segundos. */
+#catalogo-productos .producto-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+/* Tercera tarjeta: espera 0,2 segundos. */
+#catalogo-productos .producto-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* Cuarta tarjeta: espera 0,3 segundos. */
+#catalogo-productos .producto-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+/* Quinta tarjeta: espera 0,4 segundos. */
+#catalogo-productos .producto-card:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+/* Sexta tarjeta: espera 0,5 segundos. */
+#catalogo-productos .producto-card:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+/* Séptima tarjeta: espera 0,6 segundos. */
+#catalogo-productos .producto-card:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
 
 /* Respetamos a quienes prefieren reducir las animaciones. */
 @media (prefers-reduced-motion: reduce) {
@@ -958,7 +1055,7 @@ footer {
 
 
 /* ===============================================
-   BOTÓN AÑADIR AL CARRITO - PIXELCHARMS
+   BOTÓN AÑADIR AL CARRITO: PIXELCHARMS
 ================================================== */
 
 /* Aplicamos estilos únicamente a los botones
@@ -1009,7 +1106,7 @@ footer {
 
 
 /* ===============================================
-   CONTADOR DEL CARRITO - PIXELCHARMS
+   CONTADOR DEL CARRITO: PIXELCHARMS
 ================================================== */
 
 /* Diseñamos el contenedor del carrito. */
@@ -2080,4 +2177,50 @@ footer {
         /* Limitamos su ancho */
         max-width: 340px;
     }
+}
+
+/* ===============================================
+   CATÁLOGO RESPONSIVE - CELULARES
+================================================== */
+
+/* Aplicamos estos cambios únicamente en pantallas
+   de 600 píxeles de ancho o menos. */
+@media (max-width: 600px) {
+
+    /* Ajustamos el espacio lateral del catálogo. */
+    #catalogo-productos {
+        padding: 0 12px; /* Dejamos 12px de margen interior a cada lado. */
+    }
+
+    /* Ampliamos las tarjetas de los productos. */
+    #catalogo-productos .producto-card {
+        width: 100%; /* Aprovechamos todo el ancho disponible. */
+        max-width: 400px; /* Evitamos que la tarjeta crezca demasiado. */
+    }
+}
+
+/* ===============================================
+   AJUSTE DEL HERO - PANTALLAS DE PC
+   Desde 1200px de ancho
+================================================== */
+
+@media (min-width: 1200px) {
+
+    .hero-imagen {
+        height: 580px; /* Reduce la altura del banner */
+        overflow: hidden; /* Oculta la parte que excede */
+    }
+
+    .hero-imagen img {
+        width: 100%; /* Ocupa todo el ancho */
+        height: 100%; /* Se ajusta a la altura del banner */
+        object-fit: cover; /* Evita deformar la fotografía */
+        object-position: center 65%; /* Ajusta el encuadre */
+    }
+
+    .boton-principal {
+        left: 55px; /* Distancia desde la izquierda */
+        bottom: 25px; /* Distancia desde la parte inferior */
+    }
+
 }
