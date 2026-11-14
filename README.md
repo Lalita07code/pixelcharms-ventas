@@ -200,7 +200,7 @@ Para facilitar la navegación y mejorar la comprensión del sitio por parte de u
 - **Metaetiquetas:** descripción del sitio y configuración de visualización adaptable en el `head`.
 - **Encabezados y contenido:** títulos organizados y descripciones de productos claras.
 
-Estas medidas forman parte de las mejoras de accesibilidad y SEO trabajadas durante la auditoría del proyecto.
+Estas medidas forman parte de las mejoras de accesibilidad y SEO.
 
 ---
 
@@ -299,7 +299,7 @@ El desarrollo se realiza de manera incremental, incorporando y probando cada fun
 
 ## 🔧 Estado del proyecto
 
-**Versión académica funcional — en preparación para la entrega final.**
+**Versión académica funcional: Entrega final.**
 
 Se encuentran implementados el catálogo dinámico, el carrito de compras, las validaciones de stock, las notificaciones y el formulario de contacto.
 
